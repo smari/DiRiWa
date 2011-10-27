@@ -1,0 +1,8 @@
+* Make dependencies (webfonts, bootstrap & jquery) local.
+* Region references region type. Types include:
+	- "union" (like African Union), 
+	- "geographic region" (like Southeast Asia), 
+	- "treaty" (like NATO), 
+	- "block" (like BRICS and PIIGS)
+* Edit/input views
+... and lots!
