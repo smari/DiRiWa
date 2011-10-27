@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="span8 right" style="text-align: center;">
+		<a class="btn">Add a topic</a>
+		<a class="btn">Add news item</a>
+		<a class="btn">Add link</a>
+		<a class="btn">Edit statistics</a>
+</div>
+{% if country.longname %}
+<h1>{{country.shortname}} <small>({{country.name}})</small></h1>
+{% else %}
+<h1>{{country.name}}</h1>
+{% endif %}
+	
+<div class="span4">
+	<h2>General information</h2>
+	<table>
+	<tr> 
+		<td>Population:</td><td>{{country.population}}</td>
+	</tr>
+	</table>
+</div>
+<div class="span4">
+	<h2>International agreements</h2>
+	<p>Lorem ipsum sed dolore sit amet...</p>
+</div>
+<div class="span4">
+	<h2>Regional memberships</h2>
+	{% for i in country.regions.all %}
+		<li><a href="/regions/region/{{i.id}}">{{i}}</a></li>
+	{% endfor %}
+</div>
+<div class="span5">
+	<h2>Map</h2>
+	<img src="/static/img/country_{{country.id}}.png">
+</div>
+
+{% for topic in country.entitytopic_set.all %}
+<div class="span16 topic">
+<h2>{{topic.topic.name}}</h2>
+{{topic.text}}
+<a class="btn small right">Edit this topic</a>
+</div>
+{% endfor %}
+
+{% endblock %}

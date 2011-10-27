@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<ul>
+{% for i in countries %}
+	<li><a href="/regions/region/{{i.id}}">{{i}}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
