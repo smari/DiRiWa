@@ -2,10 +2,10 @@
 {% block content %}
 
 <div class="span8 right" style="text-align: center;">
-		<a class="btn">Add a topic</a>
-		<a class="btn">Add news item</a>
-		<a class="btn">Add link</a>
-		<a class="btn">Edit statistics</a>
+		<a href="/sections/add/?region={{country.id}}" class="btn">Add a section</a>
+		<a href="/news/add/?region={{country.id}}" class="btn">Add news item</a>
+		<a href="/links/add/?region={{country.id}}" class="btn">Add link</a>
+		<a href="/countries/edit/{{country.id}}/" class="btn">Edit details</a>
 </div>
 {% if country.longname %}
 <h1>{{country.shortname}} <small>({{country.name}})</small></h1>

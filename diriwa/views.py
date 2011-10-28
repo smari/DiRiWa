@@ -17,12 +17,25 @@ from datetime import datetime, timedelta, date
 import settings
 
 from diriwa.models import *
+from diriwa.forms import *
 
 
 class RegionView(DetailView):
 	context_object_name = "region"
 	model = Region
+
 	
 class CountryView(DetailView):
 	context_object_name = "country"
 	model = Country
+
+
+class TopicView(DetailView):
+	context_object_name = "topic"
+	model = Topic
+
+
+class SectionView(DetailView):
+	context_object_name = "section"
+	model = EntityTopic
+	

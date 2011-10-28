@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="span8 right">
+	<a href="/topics/add/" class="btn">New topic</a>
+</div>
+<h1>Topics</h1>
+
+<div class="span12">
+<ul>
+{% for i in topics %}
+	<li><a href="/topics/topic/{{i.id}}">{{i}}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+{% endblock %}

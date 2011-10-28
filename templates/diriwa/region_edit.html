@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block content %}
+
+<h1>Edit Region: {{region.name}}</h1>
+<div class="span12">
+<form action="/regions/edit/{{region.id}}/" method="POST">
+{%csrf_token%}
+<fieldset> 
+{{form|bootstrap}}
+<label></label><input class="btn primary" type="submit" value="Save"/>
+</fieldset>
+</form>
+</div>
+
+{% endblock %}

@@ -34,15 +34,9 @@
 				</ul> 
 				<h5>Topics</h5> 
 				<ul> 
-					<li><a href="#">Censorship</a></li> 
-					<li><a href="#">Intellectual Monopolies</a></li> 
-					<li><a href="#">Network Neutrality</a></li> 
-					<li><a href="#">Privacy</a></li> 
-					<li><a href="#">Cybercrime</a></li> 
-					<li><a href="#">Denial of Service</a></li> 
-					<li><a href="#">State Warfare</a></li> 
-					<li><a href="#">Information Politics</a></li> 
-					<li><a href="#">Transparency</a></li> 
+					{% for reg in menu_topics %}
+					<li><a href="/topics/topic/{{reg.id}}/">{{reg}}</a></li>
+					{% endfor %}
 				</ul> 
 				<h5>Cases</h5> 
 				<ul> 

@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 class Language(models.Model):
 	name		= models.CharField(max_length=200)
 
+	def __unicode__(self):
+		return self.name
 
 class Entry(models.Model):
 	pass
@@ -19,9 +21,20 @@ class RegionalEntity(Entry):
 	class Meta:
 		ordering	= ["shortname"]
 
+	def __unicode__(self):
+		return self.name
+		
+
+class RegionType(models.Model):
+	name		= models.CharField(max_length=50)
+	in_menu		= models.BooleanField(default=False)
+	
+	def __unicode__(self):
+		return self.name
+
 
 class Region(RegionalEntity):
-	union		= models.BooleanField(default=False)
+	type			= models.ForeignKey(RegionType)
 	
 	class Meta:
 		ordering	= ["name"]
@@ -43,7 +56,7 @@ class RegionalEntityLocalName(models.Model):
 class Country(RegionalEntity):
 	population	= models.IntegerField(blank=True, default=0)
 	regions		= models.ManyToManyField(Region)
-	languages	= models.ManyToManyField(Language)
+	languages	= models.ManyToManyField(Language, blank=True)
 	
 	
 	def safe(self):
@@ -65,11 +78,16 @@ class Topic(Entry):
 	class Meta:
 		ordering	= ["name"]
 		
+	def __unicode__(self):
+		return self.name
 
 class EntityTopic(Entry):
 	country		= models.ForeignKey(RegionalEntity)
 	topic		= models.ForeignKey(Topic)
 	text			= models.TextField()
+	
+	class Meta:
+		unique_together	=	(("country", "topic"),)
 
 
 class Tag(models.Model):

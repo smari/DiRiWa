@@ -2,9 +2,9 @@
 {% block content %}
 
 <div class="span8 right" style="text-align: center;">
-		<a class="btn">Add a topic</a>
-		<a class="btn">Add news item</a>
-		<a class="btn">Add link</a>
+		<a href="/sections/add/" class="btn">Add a section</a>
+		<a href="/news/add/?region={{region.id}}" class="btn">Add news item</a>
+		<a href="/links/add/?region={{region.id}}" class="btn">Add link</a>
 </div>
 <h1>{{region}}</h1>
 
