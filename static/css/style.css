@@ -67,3 +67,12 @@ footer {
 .brand {
 	width:				200px;
 }
+
+.mainedit select {
+	width:				600px;
+}
+
+.mainedit textarea {
+	width:				600px;
+	height:				300px;
+}

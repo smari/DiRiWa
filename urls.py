@@ -25,6 +25,8 @@ urlpatterns = patterns('',
 	(r"^sections/add/$",						CreateView.as_view(model=EntityTopic, success_url="/sections/section/%(id)d/", template_name_suffix="_new")),
 	(r"^sections/edit/(?P<pk>\d+)/$",			UpdateView.as_view(model=EntityTopic, success_url="/sections/section/%(id)d/", template_name_suffix="_edit")),
 	(r"^sections/section/(?P<pk>\d+)/$",			SectionView.as_view()),
+	(r'^accounts/profile/',						TemplateView.as_view(template_name="registration/profile.html")),
+	(r'^accounts/',							include('registration.urls')),
 )
 
 urlpatterns += patterns('',

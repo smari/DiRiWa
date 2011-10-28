@@ -100,6 +100,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
+    'registration',
     'bootstrapform',
     'diriwa',
 )
+
+
+ACCOUNT_ACTIVATION_DAYS = 30
+

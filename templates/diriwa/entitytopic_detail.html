@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block actions %}
+		<a href="/sections/edit/{{section.id}}/" class="btn">Edit this section</a>
+{% endblock %}
+{% block content %}
+
+<h1>{{section.topic}} in {{section.country}}</h1>
+
+<div class="span18">
+	{{section.wikitext|safe}}
+</div>
+
+{% endblock %}

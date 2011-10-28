@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block content %}
+
+<h1>Log in</h1>
+<div class="span12">
+<form action="/accounts/login/" method="POST">
+{%csrf_token%}
+<fieldset> 
+{{form|bootstrap}}
+<label></label>
+<input class="btn primary" type="submit" value="Log in"/>
+<a href="/accounts/register/" class="btn">Sign up</a>
+</fieldset>
+</form>
+</div>
+
+{% endblock %}

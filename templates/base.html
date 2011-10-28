@@ -18,7 +18,9 @@
 					<li><a href="/topics/">Topics</a></li> 
 					<li><a href="/cases/">Cases</a></li> 
 				</ul> 
-				<p class="pull-right">Logged in as <a href="#">username</a></p> 
+				{% if user.is_authenticated %}
+				<p class="pull-right">Logged in as <a href="/accounts/profile/">{{user.username}}</a> (<a href="/accounts/logout/">Log out</a>)</p> 
+				{% endif %}
 			</div> 
 		</div> 
 	</div> 
@@ -34,9 +36,15 @@
 				</ul> 
 				<h5>Topics</h5> 
 				<ul> 
-					{% for reg in menu_topics %}
-					<li><a href="/topics/topic/{{reg.id}}/">{{reg}}</a></li>
-					{% endfor %}
+					<li><a href="#">Censorship</a></li> 
+					<li><a href="#">Intellectual Monopolies</a></li> 
+					<li><a href="#">Network Neutrality</a></li> 
+					<li><a href="#">Privacy</a></li> 
+					<li><a href="#">Cybercrime</a></li> 
+					<li><a href="#">Denial of Service</a></li> 
+					<li><a href="#">State Warfare</a></li> 
+					<li><a href="#">Information Politics</a></li> 
+					<li><a href="#">Transparency</a></li> 
 				</ul> 
 				<h5>Cases</h5> 
 				<ul> 
@@ -48,6 +56,14 @@
 			</div> 
 		</div> 
 		<div class="content"> 
+			<div class="span8 right" style="text-align: center;">
+			{% if user.is_authenticated %}
+				{% block actions %}
+				{% endblock %}
+			{% else %}
+				<a href="/accounts/login/" class="btn primary">Log in or sign up to contribute</a>
+			{% endif %}
+			</div>
 			{% block content %}	
 			{% endblock %}
 		</div> 

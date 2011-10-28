@@ -41,6 +41,13 @@ class Region(RegionalEntity):
 		
 	def population(self):
 		return sum([x.population for x in self.country_set.all()])
+			
+	def agreements(self):
+		agreements = []
+		for i in self.country_set.all():
+			agreements.extend(i.treaties())
+			agreements.extend(i.unions())
+		return set(agreements)
 		
 	def __unicode__(self):
 		return self.name
@@ -67,7 +74,16 @@ class Country(RegionalEntity):
 	
 	def longname(self):
 		return not (self.name == self.shortname)
-	
+		
+	def treaties(self):
+		return self.regions.filter(type__name="Treaty")
+
+	def unions(self):
+		return self.regions.filter(type__name="Union")
+
+	def geographical(self):
+		return self.regions.filter(type__name__in=["Block", "Geographic region"])
+
 	def __unicode__(self):
 		return self.shortname
 
@@ -85,6 +101,16 @@ class EntityTopic(Entry):
 	country		= models.ForeignKey(RegionalEntity)
 	topic		= models.ForeignKey(Topic)
 	text			= models.TextField()
+	
+	def wikitext(self):
+		from mwlib.uparser import simpleparse
+		from htmlwriter import HTMLWriter
+		from StringIO import StringIO
+		out = StringIO()
+		print "Unwikified text: %s" % (self.text)
+		w = HTMLWriter(out)
+		w.write(simpleparse(self.text))
+		return out.getvalue()
 	
 	class Meta:
 		unique_together	=	(("country", "topic"),)
