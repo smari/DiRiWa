@@ -102,6 +102,7 @@ class EntityTopic(Entry):
 	topic			= models.ForeignKey(Topic)
 	text			= models.TextField()
 	
+
 	def wikitext(self):
 		from mwlib.uparser import simpleparse
 		from htmlwriter import HTMLWriter
@@ -111,6 +112,19 @@ class EntityTopic(Entry):
 		w = HTMLWriter(out)
 		w.write(simpleparse(self.text))
 		return out.getvalue()
+
+
+	def severity(self):
+		votes = self.entitytopicvote_set.all()
+		count = votes.count()
+		if count == 0:
+			return 1
+		return sum([x.value for x in votes])/count # Simple average
+
+
+	def votes(self):
+		return self.entitytopicvote_set.all().count()
+		
 	
 	class Meta:
 		unique_together	=	(("country", "topic"),)
@@ -119,7 +133,7 @@ class EntityTopic(Entry):
 class EntityTopicVote(models.Model):
 	section			= models.ForeignKey(EntityTopic)
 	user			= models.ForeignKey(User)
-	value			= models.IntegerField()
+	value			= models.IntegerField(default=1)
 
 	class Meta:
 		unique_together	=	(("section", "user"),)

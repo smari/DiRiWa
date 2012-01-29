@@ -19,6 +19,18 @@ import settings
 from diriwa.models import *
 from diriwa.forms import *
 
+import simplejson as json
+
+
+def jsonize(f):
+	def wrapped(*args, **kwargs):
+		return HttpResponse(json.dumps(f(*args, **kwargs)))
+
+	return wrapped
+
+
+
+
 
 class RegionView(DetailView):
 	context_object_name = "region"
@@ -38,4 +50,33 @@ class TopicView(DetailView):
 class SectionView(DetailView):
 	context_object_name = "section"
 	model = EntityTopic
+
+
+@login_required
+@jsonize
+def section_vote(request):
+	ctx = {"ok": True}
+
+	user = request.user
+	section = request.REQUEST.get("section", 0)
+	vote = int(request.REQUEST.get("vote", 5))
+
+	if section == 0:
+		return {"ok": False, "error": "Invalid section (zero)"}
+
+	try:
+		v, created = EntityTopicVote.objects.get_or_create(user=user, section_id=section)
+	except Exception, e:
+		return {"ok": False, "error": "Invalid section (%s)" % e}
+		
+	v.value = vote
+	v.save()
+
+	ctx["section"] = section
+	ctx["vote"] = vote
+	ctx["user"] = user.username
+	ctx["severity"] = v.section.severity()
+	ctx["votes"] = v.section.votes()
 	
+	return ctx
+
