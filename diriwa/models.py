@@ -89,7 +89,7 @@ class Country(RegionalEntity):
 
 
 class Topic(Entry):
-	name		= models.CharField(max_length=100)
+	name			= models.CharField(max_length=100)
 	
 	class Meta:
 		ordering	= ["name"]
@@ -98,8 +98,8 @@ class Topic(Entry):
 		return self.name
 
 class EntityTopic(Entry):
-	country		= models.ForeignKey(RegionalEntity)
-	topic		= models.ForeignKey(Topic)
+	country			= models.ForeignKey(RegionalEntity)
+	topic			= models.ForeignKey(Topic)
 	text			= models.TextField()
 	
 	def wikitext(self):
@@ -116,9 +116,18 @@ class EntityTopic(Entry):
 		unique_together	=	(("country", "topic"),)
 
 
+class EntityTopicVote(models.Model):
+	section			= models.ForeignKey(EntityTopic)
+	user			= models.ForeignKey(User)
+	value			= models.IntegerField()
+
+	class Meta:
+		unique_together	=	(("section", "user"),)
+
+
 class Tag(models.Model):
-	name		= models.CharField(max_length = 40)
-	description	= models.TextField()
+	name			= models.CharField(max_length = 40)
+	description		= models.TextField()
 
 
 class EntityTag(models.Model):
@@ -126,25 +135,25 @@ class EntityTag(models.Model):
 	
 
 class CourtCase(Entry):
-	country		= models.ForeignKey(RegionalEntity)
+	country			= models.ForeignKey(RegionalEntity)
 	
 	
 class NewsItem(models.Model):
 	headline		= models.CharField(max_length=200)
 	text			= models.TextField()
-	itemref		= models.ForeignKey(Entry, blank=True, null=True)
-	author		= models.ForeignKey(User)
+	itemref			= models.ForeignKey(Entry, blank=True, null=True)
+	author			= models.ForeignKey(User)
 	timestamp_submitted	= models.DateTimeField(auto_now_add=True)
-	timestamp_edited		= models.DateTimeField(auto_now=True)
+	timestamp_edited	= models.DateTimeField(auto_now=True)
 
 
 class Link(models.Model):
-	title					= models.CharField(max_length=200)
-	url					= models.URLField()
-	description			= models.TextField()
-	itemref				= models.ForeignKey(Entry, blank=True, null=True)
-	author				= models.ForeignKey(User)
+	title			= models.CharField(max_length=200)
+	url			= models.URLField()
+	description		= models.TextField()
+	itemref			= models.ForeignKey(Entry, blank=True, null=True)
+	author			= models.ForeignKey(User)
 	timestamp_submitted	= models.DateTimeField(auto_now_add=True)
-	timestamp_edited		= models.DateTimeField(auto_now=True)
+	timestamp_edited	= models.DateTimeField(auto_now=True)
 	
 	

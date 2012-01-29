@@ -1,9 +1,9 @@
 <html>
 <head>
 	<title>Digital Rights Watch</title>
-	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/css/style.css"/>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>	
+	<script src="/static/js/jquery.js"></script>	
 	<script src="/static/js/diriwa.js"></script>
 </head>
 <body> 
@@ -36,18 +36,15 @@
 				</ul> 
 				<h5>Topics</h5> 
 				<ul> 
-					<li><a href="#">Censorship</a></li> 
-					<li><a href="#">Intellectual Monopolies</a></li> 
-					<li><a href="#">Network Neutrality</a></li> 
-					<li><a href="#">Privacy</a></li> 
-					<li><a href="#">Cybercrime</a></li> 
-					<li><a href="#">Denial of Service</a></li> 
-					<li><a href="#">State Warfare</a></li> 
-					<li><a href="#">Information Politics</a></li> 
-					<li><a href="#">Transparency</a></li> 
+					{% for reg in menu_topics %}
+					<li><a href="/topics/topic/{{reg.id}}/">{{reg}}</a></li>
+					{% endfor %}
 				</ul> 
 				<h5>Cases</h5> 
 				<ul> 
+					{% for reg in menu_cases %}
+					<li><a href="/topics/topic/{{reg.id}}/">{{reg}}</a></li>
+					{% endfor %}
 					<li><a href="#">Criminal cases</a></li> 
 					<li><a href="#">Free speech</a></li> 
 					<li><a href="#">Libel / defamation</a></li>

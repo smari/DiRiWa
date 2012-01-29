@@ -7,19 +7,6 @@
 {% block content %}
 
 <h1>{{region}}</h1>
-
-<div class="span6 right"> 
-	<h2>Countries</h2>
-	<ul>
-		{% for country in region.country_set.all %}
-		{% if country.longname %}
-		<li><a href="/countries/country/{{country.id}}/">{{country.shortname}}</a> ({{country.name}})</li>
-		{% else %}
-		<li><a href="/countries/country/{{country.id}}/">{{country.name}}</a></li>
-		{% endif %}
-		{% endfor %}
-	</ul>
-</div>
 	
 <div class="content">
 	<div class="span17">
@@ -49,10 +36,22 @@
 				<p>Lorem ipsum sed dolore sit amet...</p>
 			</div>
 			{% endcomment %}
-		</div>
 		<div class="span6">
 			<h2>Map</h2>
 			<img src="/static/img/region_{{region.id}}.png">
+		</div>
+		</div>
+	<div class="span6"> 
+		<h2>Countries</h2>
+		<ul>
+			{% for country in region.country_set.all %}
+			{% if country.longname %}
+			<li><a href="/countries/country/{{country.id}}/">{{country.shortname}}</a> ({{country.name}})</li>
+			{% else %}
+			<li><a href="/countries/country/{{country.id}}/">{{country.name}}</a></li>
+			{% endif %}
+			{% endfor %}
+			</ul>
 		</div>
 	</div>
 

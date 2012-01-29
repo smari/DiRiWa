@@ -19,7 +19,7 @@
 {% for discussion in topic.entitytopic_set.all %}
 <div class="span16 topic">
 <h2>{{discussion.country.name}}</h2>
-{{discussion.wikitext}}
+{{discussion.wikitext|safe}}
 <a href="/sections/edit/{{discussion.id}}/" class="btn small right">Edit this discussion</a>
 </div>
 {% endfor %}
