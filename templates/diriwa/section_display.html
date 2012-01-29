@@ -1,24 +1,24 @@
 <div class="span16 topic">
 <h2>{{topic.topic.name}}</h2>
 <div class="vote">
-	<input type="text" class="votebar" id="vote_{{topic.id}}" style="border:0; color:#f6931f; font-weight:bold;" />
-	<div id="vote_bar_{{topic.id}}"></div>
-	<script>
-	$(function() {
-		$( "#slider" ).slider({
-			value:100,
-			min: 0,
-			max: 500,
-			step: 50,
-			slide: function( event, ui ) {
-				$.getJSON("/", {}, function(data) {
-					
-				});
-			}
-		});
-	});
-	</script>
+	Severity: <span id="vote_num_{{topic.id}}">5</span>/10
+	<div id="vote_{{topic.id}}"></div>
 </div>
+<script>
+$(function() {
+	$("#vote_{{topic.id}}").slider({
+		value:5,
+		min: 1,
+		max: 10,
+		step: 1,
+		stepstop: function( event, ui ) {
+			$("#vote_num_{{topic.id}}").text($("#vote_{{topic.id}}").slider("value"));
+			$.getJSON("/", {}, function(data) {
+			});
+		}
+	});
+});
+</script>
 {{topic.wikitext|safe}}
 <a href="/sections/edit/{{topic.id}}/" class="btn small right">Edit this topic</a>
 </div>
