@@ -8,7 +8,12 @@
 {%csrf_token%}
 <fieldset> 
 {{form|bootstrap}}
-<label></label><input class="btn primary" type="submit" value="Save"/>
+<div class="clearfix">
+	<label></label>
+	<div class="input">
+		<input class="btn primary" type="submit" value="Save"/>
+	</div>
+</div>
 </fieldset>
 </form>
 </div>

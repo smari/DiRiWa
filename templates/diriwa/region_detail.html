@@ -15,7 +15,7 @@
 				<h2>Region statistics</h2>
 				<table>
 				<tr> 
-					<td>Countries:</td><td>{{region.country_set.count}}</td>
+					<td>Countries:</td><td>{{region.country_regions.count}}</td>
 				</tr>
 				<tr> 
 					<td>Population:</td><td>{{region.population}}</td>
@@ -44,11 +44,11 @@
 	<div class="span6"> 
 		<h2>Countries</h2>
 		<ul>
-			{% for country in region.country_set.all %}
-			{% if country.longname %}
+			{% for country in region.country_regions.all %}
+			{% if country.name %}
 			<li><a href="/countries/country/{{country.id}}/">{{country.shortname}}</a> ({{country.name}})</li>
 			{% else %}
-			<li><a href="/countries/country/{{country.id}}/">{{country.name}}</a></li>
+			<li><a href="/countries/country/{{country.id}}/">{{country.shortname}}</a></li>
 			{% endif %}
 			{% endfor %}
 			</ul>
