@@ -72,10 +72,11 @@ footer {
 	width:				600px;
 }
 
-.mainedit textarea {
+.mainedit textarea, textarea {
 	width:				600px;
 	height:				300px;
 }
+
 
 input {
 	height:				25px;

@@ -40,11 +40,11 @@ class Region(RegionalEntity):
 		ordering	= ["name"]
 		
 	def population(self):
-		return sum([x.population for x in self.country_set.all()])
+		return sum([x.population for x in self.country_regions.all()])
 			
 	def agreements(self):
 		agreements = []
-		for i in self.country_set.all():
+		for i in self.country_regions.all():
 			agreements.extend(i.treaties())
 			agreements.extend(i.unions())
 		return set(agreements)
@@ -55,14 +55,20 @@ class Region(RegionalEntity):
 
 
 class RegionalEntityLocalName(models.Model):
-	language		= models.ForeignKey(Language)
+	language	= models.ForeignKey(Language)
 	entity		= models.ForeignKey(RegionalEntity)
 	name		= models.CharField(max_length=200, blank=True)
 
 
-class Country(RegionalEntity):
+class Country(Region):
 	population	= models.IntegerField(blank=True, default=0)
-	regions		= models.ManyToManyField(Region)
+	tld		= models.CharField(max_length=20, blank=True, null=True)
+	itu_t		= models.CharField(max_length=20, blank=True, null=True)
+	deptype		= models.CharField(max_length=50, blank=True, null=True)
+	depsubtype	= models.CharField(max_length=50, blank=True, null=True)
+	capital		= models.CharField(max_length=100, blank=True, null=True)
+	currency	= models.CharField(max_length=100, blank=True, null=True)
+	regions		= models.ManyToManyField(Region, related_name="country_regions")
 	languages	= models.ManyToManyField(Language, blank=True)
 	
 	
@@ -82,7 +88,7 @@ class Country(RegionalEntity):
 		return self.regions.filter(type__name="Union")
 
 	def geographical(self):
-		return self.regions.filter(type__name__in=["Block", "Geographic region"])
+		return self.regions.filter(type__name__in=["Block", "Geographic region", "Country"])
 
 	def __unicode__(self):
 		return self.shortname
@@ -145,8 +151,10 @@ class Tag(models.Model):
 
 
 class EntityTag(models.Model):
-	pass
-	
+	tag			= models.ForeignKey(Tag)
+	entity			= models.ForeignKey(Entry)
+	value			= models.CharField(max_length=100, null=True, blank=True)
+
 
 class CourtCase(Entry):
 	country			= models.ForeignKey(RegionalEntity)
