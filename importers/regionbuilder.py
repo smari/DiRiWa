@@ -50,9 +50,15 @@ for line in reader:
 	try:
 		c = Country.objects.get(shortname=line[0])
 	except Exception, e:
-		print e
-		print "Couldn't find country name '%s' - check the spelling!" % line[0]
-		continue
+		try:
+			c = Country.objects.get(name=line[0])
+		except Exception, e:
+			try:
+				c = Country.objects.get(shortname__icontains=line[0])
+			except Exception, e:
+				print e
+				print "Couldn't find country name '%s' - check the spelling!" % line[0]
+				continue
 
 	c.regions.add(region)
 	print "Added %s to region %s" % (c.shortname, region.name)

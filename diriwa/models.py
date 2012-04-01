@@ -35,6 +35,7 @@ class RegionType(models.Model):
 
 class Region(RegionalEntity):
 	type			= models.ForeignKey(RegionType)
+	# url			= models.URLField(blank=True, null=True)
 	
 	class Meta:
 		ordering	= ["name"]
@@ -94,6 +95,12 @@ class Country(Region):
 		return self.shortname
 
 
+class RegionMembership(models.Model):
+	region		= models.ForeignKey(Region)
+	member		= models.ForeignKey(Region, related_name="member")
+	type		= models.CharField(max_length=100, blank=True, null=True)
+
+
 class Topic(Entry):
 	name			= models.CharField(max_length=100)
 	
@@ -104,7 +111,7 @@ class Topic(Entry):
 		return self.name
 
 class EntityTopic(Entry):
-	country			= models.ForeignKey(RegionalEntity)
+	region			= models.ForeignKey(RegionalEntity)
 	topic			= models.ForeignKey(Topic)
 	text			= models.TextField()
 	
@@ -133,7 +140,7 @@ class EntityTopic(Entry):
 		
 	
 	class Meta:
-		unique_together	=	(("country", "topic"),)
+		unique_together	=	(("region", "topic"),)
 
 
 class EntityTopicVote(models.Model):

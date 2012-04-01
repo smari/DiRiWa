@@ -11,7 +11,7 @@ from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.db.models import Q
 
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, CreateView, UpdateView
 
 from datetime import datetime, timedelta, date
 import settings
@@ -32,24 +32,32 @@ def jsonize(f):
 
 
 
-class RegionView(DetailView):
+class RegionDetailView(DetailView):
 	context_object_name = "region"
 	model = Region
 
 	
-class CountryView(DetailView):
+class CountryDetailView(DetailView):
 	context_object_name = "country"
 	model = Country
 
 
-class TopicView(DetailView):
+class TopicDetailView(DetailView):
 	context_object_name = "topic"
 	model = Topic
 
 
-class SectionView(DetailView):
+class SectionCreateView(CreateView):
+	context_object_name = "section"
+	template_name = "diriwa/entitytopic_new.html"
+	form_class = SectionForm
+	success_url = "/regions/region/%(country)d/"
+
+
+class SectionDetailView(DetailView):
 	context_object_name = "section"
 	model = EntityTopic
+
 
 
 @login_required

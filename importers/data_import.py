@@ -5,11 +5,14 @@
 
 import os
 import sys
+sys.path.append("..")
 os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
 import csv 
 from diriwa.models import *
+import settings
+settings.DEBUG = False
 
-csvfile = open("data/countrylist.csv")
+csvfile = open("../data/countrylist.csv")
 dialect = csv.Sniffer().sniff(csvfile.read(1024))
 csvfile.seek(0)
 reader = csv.reader(csvfile, dialect=dialect)

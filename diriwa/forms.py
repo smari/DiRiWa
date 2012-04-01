@@ -5,3 +5,9 @@ class RegionForm(ModelForm):
 	class Meta:
 		model = Region
 		
+
+class SectionForm(ModelForm):
+	class Meta:
+		model = EntityTopic
+		exclude = ('region', )
+

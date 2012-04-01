@@ -5,6 +5,7 @@
 <h1>New Section</h1>
 <div class="span12">
 <form action="/sections/add/" method="POST">
+<input type="hidden" name="region" id="{{section.region.id}}"/>
 {%csrf_token%}
 <fieldset> 
 {{form|bootstrap}}
