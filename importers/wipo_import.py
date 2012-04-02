@@ -29,6 +29,7 @@ for line in reader:
 	if created:
 		print "Created treaty %s" % treaty.name
 
+	if not line[2].strip(): continue
 	try:	signatory = Region.objects.get(name=line[2])
 	except:
 		try:	signatory = Region.objects.get(shortname=line[2])
