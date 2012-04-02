@@ -1,0 +1,4 @@
+django
+django-bootstrap-form
+django-registration
+mwlib
