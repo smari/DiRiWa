@@ -7,3 +7,5 @@ python data_import.py
 python regionbuilder.py ../data/african_union.csv Union 'African Union'
 python regionbuilder.py ../data/european_union.csv Union 'European Union'
 python legacy_importer.py
+python wipo_import.py
+python coe_import.py
