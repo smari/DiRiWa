@@ -83,7 +83,7 @@ input {
 }
 
 .vote {
-	background:			#fcc;
+	background:			#eee;
 	width:				200px;
 	float:				right;
 	border:				1px solid #eee;
@@ -94,4 +94,11 @@ input {
 .vote > div {
 	width:				120px;
 	float:				right;
+}
+
+.section {
+	border-top:			1px solid #eee;
+	padding-top:			2px;
+	margin-top:			5px;
+	clear:				both;
 }

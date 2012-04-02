@@ -1,33 +1,35 @@
+<a name="section-{{section.topic.name|slugify}}-{{section.id}}"></a>
 <div class="span16 section">
+<a href="/sections/edit/{{section.id}}/" class="btn btn-mini right">Edit this section</a>
 <h2>{{section.topic.name}}</h2>
 <div class="vote">
 	<p>Severity: <span id="vote_severity_{{section.id}}">{{section.severity}}</span>/10</p>
 	<p>Votes: <span id="vote_count_{{section.id}}">{{section.votes}}</span></p>
 	<p>Vote! <span id="vote_num_{{section.id}}">1</span>/10	<div id="vote_{{section.id}}"></div></p>
-</div>
-<script>
-$(function() {
-	$("#vote_{{section.id}}").slider({
-		value:1,
-		min: 1,
-		max: 10,
-		step: 1,
-		stop: function( event, ui ) {
-			var val = $("#vote_{{section.id}}").slider("value")
-			$("#vote_num_{{section.id}}").text(val);
-			$.getJSON("/sections/vote/", {'section': {{section.id}}, 'vote': val}, function(data) {
-				if (data.ok) {
-					$("#vote_severity_{{section.id}}").html(data.severity);
-					$("#vote_count_{{section.id}}").html(data.votes);
-					// Done.
-				} else {
-					// Error.
-				}
-			});
-		}
+	<script>
+	$(function() {
+		$("#vote_{{section.id}}").slider({
+			value:1,
+			min: 1,
+			max: 10,
+			step: 1,
+			stop: function( event, ui ) {
+				var val = $("#vote_{{section.id}}").slider("value")
+				$("#vote_num_{{section.id}}").text(val);
+				$.getJSON("/sections/vote/", {'section': {{section.id}}, 'vote': val}, function(data) {
+					if (data.ok) {
+						$("#vote_severity_{{section.id}}").html(data.severity);
+						$("#vote_count_{{section.id}}").html(data.votes);
+						// Done.
+					} else {
+						// Error.
+					}
+				});
+			}
+		});
 	});
-});
-</script>
+	</script>
+</div>
+
 {{section.wikitext|safe}}
-<a href="/sections/edit/{{section.id}}/" class="btn small right">Edit this section</a>
 </div>

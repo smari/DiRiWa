@@ -8,85 +8,126 @@
 {% block content %}
 
 {% if region.shortname %}
-<h1>{{region.shortname}} <small>({{region.name}})</small></h1>
+<h1>{{region.shortname}}{% if region.name %} <small>({{region.name}})</small>{% endif %}</h1>
 {% else %}
 <h1>{{region.name}}</h1>
 {% endif %}
 	
 <div class="content">
-	<div class="span10">
-		<div class="span5">
-				<h2>Region statistics</h2>
-				<table>
-				{% if region.regionmembers.count %}<tr> <td>Countries:</td><td>{{region.regionmembers.count}}</td> 	</tr> {% endif %}
-				<tr> <td>Population:</td><td>{{region.population}}</td>			</tr>
-				<tr> <td>Region type:</td><td>{{region.type}}</td>			</tr>
-				{% if region.url %}<tr> <td>Website:</td><td><a href="{{region.url}}">{{region.url}}</a></td></tr>{% endif %}
-				{% if region.itu_t %}<tr> <td>Dialing prefix:</td><td>{{region.itu_t}}</td></tr>{% endif %}
-				{% if region.deptype %}<tr> <td>Political status:</td><td>{{region.deptype}}{% if region.depsubtype %}, {{region.depsubtype}}{%endif%}</td></tr>{% endif %}
-				{% if region.capital %}<tr> <td>Capital:</td><td><a href="http://en.wikipedia.org/wiki/{{region.capital}}">{{region.capital}}</a></td></tr>{% endif %}
-				{% if region.currency %}<tr> <td>Currency:</td><td>{{region.currency}}</td></tr>{% endif %}
-				{% if region.languages.count %}<tr> <td>Languages:</td><td>{% for lang in region.languages %}{{lang}}, {%endfor%}</td></tr>{% endif %}
-				</table>
-			</div>
-			{% if region.agreements %}
-			<div class="span4">
-				<h2>International agreements in the region</h2>
-				<ul>
-				{% for i in region.agreements %}
-					<li><a href="/regions/{{i.region.id}}/">{{i}}</a></li>
-				{% endfor %}
-				</ul>
-			</div>
-			{% endif %}
-			{% if region.treaties or region.unions %}
-			<div class="span4">
-				<h2>International agreements</h2>
-				<ul>
-				{% for i in region.treaties %}
-					<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %}({{i.type}}){% endif %}</li>
-				{% endfor %}
-				{% for i in region.unions %}
-					<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %}({{i.type}}){% endif %}</li>
-				{% endfor %}
-				</ul>
-			</div>
-			{% endif %}
-			{% if region.geographical %}
-			<div class="span4">
-				<h2>Regional memberships</h2>
-				<ul>
-				{% for i in region.geographical %}
-					<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} ({{i.type}}){% endif %}</li>
-				{% endfor %}
-				</ul>
-			</div>
-			{% endif %}
+	<div class="row">
+		<div class="span6">
+			<h2>Region statistics</h2>
+			<table class="table table-bordered table-condensed">
+			{% if region.regionmembers.count %}<tr> <td>Countries:</td><td>{{region.regionmembers.count}}</td> 	</tr> {% endif %}
+			<tr> <td>Population:</td><td>{{region.population}}</td>			</tr>
+			<tr> <td>Region type:</td><td>{{region.type}}</td>			</tr>
+			{% if region.url %}<tr> <td>Website:</td><td><a href="{{region.url}}">{{region.url}}</a></td></tr>{% endif %}
+			{% if region.itu_t %}<tr> <td>Dialing prefix:</td><td>{{region.itu_t}}</td></tr>{% endif %}
+			{% if region.deptype %}<tr> <td>Political status:</td><td>{{region.deptype}}{% if region.depsubtype %}, {{region.depsubtype}}{%endif%}</td></tr>{% endif %}
+			{% if region.capital %}<tr> <td>Capital:</td><td><a href="http://en.wikipedia.org/wiki/{{region.capital}}">{{region.capital}}</a></td></tr>{% endif %}
+			{% if region.currency %}<tr> <td>Currency:</td><td>{{region.currency}}</td></tr>{% endif %}
+			{% if region.languages.count %}<tr> <td>Languages:</td><td>{% for lang in region.languages %}{{lang}}, {%endfor%}</td></tr>{% endif %}
+			</table>
+		</div>
 
-			{% comment %}
-			<div class="span5">
-				<h2>Overall Digital Rights Situation</h2>
-				<p>Lorem ipsum sed dolore sit amet...</p>
-			</div>
-			{% endcomment %}
-	</div>
-	{% if region.regionmembers.count %}
-	<div class="span6"> 
-		<h2>Countries</h2>
-		<ul>
-			{% for country in region.regionmembers.all %}
-			<li><a href="/regions/{{country.id}}/">{{country.shortname}}</a></li>
+		{% if region.section_set.count %}
+		<div class="span6">
+			<h2>Table of Contents</h2>
+			<div class="well">
+			<ul>
+			{% for section in region.section_set.all %}		
+				<li><a href="#section-{{section.topic.name|slugify}}-{{section.id}}">{{section.topic.name}}</a></li>
 			{% endfor %}
 			</ul>
+			</div>
 		</div>
+		{% endif %}
+	</div>
+
+	{% if region.section_set.count %}
+	<hr/>
+	<div class="row">
+		<div class="span4">
+			<h2>Overall Digital Rights Situation</h2>
+
+			
+
+			</div>
 	</div>
 	{% endif %}
 
-{% for section in region.section_set.all %}
-{% include "diriwa/section_display.html" %}
-{% endfor %}
+
+	<hr/>
+	<div class="row">
+		{% if region.agreements %}
+		<div class="span4">
+			<h2>International agreements in the region</h2>
+			<ul>
+			{% for i in region.agreements %}
+				<li><a href="/regions/{{i.region.id}}/">{{i}}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+	
+		{% if region.treaties %}
+		<div class="span4">
+			<h2>International agreements</h2>
+			<ul>
+			{% for i in region.treaties %}
+				<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} <small>({{i.type}})</small>{% endif %}</li>
+			{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		{% if region.unions %}
+		<div class="span4">
+			<h2>Unions</h2>
+			<ul>
+			{% for i in region.unions %}
+				<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} <small>({{i.type}})</small>{% endif %}</li>
+			{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		{% if region.geographical %}
+		<div class="span4">
+			<h2>Regional memberships</h2>
+			<ul>
+			{% for i in region.geographical %}
+				<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} <small>({{i.type}})</small>{% endif %}</li>
+			{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		{% if region.regionmembers.count %}
+		<div class="span4"> 
+			<h2>
+				{% if region.type.name == "Country" %}Dependencies{% endif %}
+				{% if region.type.name == "Union" %}Members{% endif %}
+				{% if region.type.name == "Geographic region" %}Countries{% endif %}
+				{% if region.type.name == "Block" %}Countries{% endif %}
+				{% if region.type.name == "Treaty" %}Signatories{% endif %}
+			</h2>
+			<ul>
+				{% for country in region.regionmembers.all %}
+				<li><a href="/regions/{{country.id}}/">{{country.shortname}}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+
+	<div class="row">
+	{% for section in region.section_set.all %}
+		{% include "diriwa/section_display.html" %}
+	{% endfor %}
+	</div>
 
 </div>
-
 
 {% endblock %}

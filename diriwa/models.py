@@ -38,13 +38,12 @@ class Region(Entity):
 	regionmembers		= models.ManyToManyField("Region", blank=True, through="RegionMembership")
 
 	class Meta:
-		ordering	= ["shortname"]
+		ordering	= ["name", "shortname", "type"]
 
 	def safe(self):
 		if self.shortname == "":
 			self.shortname = self.name
 		super(self, save)()
-		
 	
 	def longname(self):
 		return not (self.name == self.shortname)
