@@ -51,9 +51,9 @@
 	</div> 
 </div> 
  
-	<div class="container-fluid"> 
+	<div class="container"> 
 		<div class="content"> 
-			<div class="span8 right" style="text-align: center;">
+			<div class="pull-right btn-group">
 			{% if user.is_authenticated %}
 				{% block actions %}
 				{% endblock %}
@@ -64,9 +64,10 @@
 			{% block content %}	
 			{% endblock %}
 		</div> 
-	</div> 
-	<footer> 
-          <p><a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a> DiRiWa is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a href="/about/">About</a>. <a href="/about/credits/">Credits</a>.</p> 
+	</div>
+	<footer style="margin-top: 10em; font-size: 80%;">
+		<hr/>
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a> DiRiWa is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a href="/about/">About</a>. <a href="/about/credits/">Credits</a>.
 	</footer> 
 </body> 
 </html>
