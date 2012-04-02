@@ -1,0 +1,9 @@
+git clone https://github.com/smari/DiRiWa.git
+cd DiRiWa
+pip install -r deps.txt # probably needs apt-get install libevent-dev libxslt-dev
+python manage.py syncdb
+cd importers
+python data_import.py
+python regionbuilder.py ../data/african_union.csv Union 'African Union'
+python regionbuilder.py ../data/european_union.csv Union 'European Union'
+python legacy_importer.py
