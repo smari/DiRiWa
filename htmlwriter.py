@@ -4,7 +4,7 @@ from mwlib import parser
 import urllib
 import cgi
 
-from PIL import Image
+# from PIL import Image
 
 
 class HTMLWriter(object):
@@ -55,6 +55,21 @@ class HTMLWriter(object):
                 args.append(' style="%s"' % ';'.join(styleArgs))
                 gotExtraClass = 1
         return ' '.join(args)
+
+
+    def writeArticleLink(self, n):
+        # TODO: Fix me!
+        print "--> writeArticleLink"
+        # print "TARGET:" + n.target
+
+        #for i in [(Region, Topic, News]
+        #try:	targetobj = i.objects.get(name=n.target)
+        #except:	pass
+
+        #self.out.write("<a>")
+        self.out.write(n.target)
+        #self.out.write("</a>")
+        print "<-- writeArticleLink"
 
 
     def writeMagic(self, m):
@@ -228,10 +243,10 @@ class HTMLWriter(object):
         if img is None:
             return
         
-        target = "/timeline/"+os.path.basename(img)
-        width, height = Image.open(img).size
+        # target = "/timeline/"+os.path.basename(img)
+        # width, height = Image.open(img).size
         
-        self.out.write('<img src="%s" width="%s" height="%s" />' % (target, width, height))
+        # self.out.write('<img src="%s" width="%s" height="%s" />' % (target, width, height))
         
     def writeImageLink(self, obj):
         """
@@ -268,11 +283,11 @@ class HTMLWriter(object):
         if self.imglevel==0:
             self.imglevel += 1
 
+            return
             try:
                 def getimg():
-                    return Image.open(os.path.join(os.path.expanduser("~/images"), path))
+                    # return Image.open(os.path.join(os.path.expanduser("~/images"), path))
                 img = None
-                
                 if not width:
                     if not img:
                         img = getimg()

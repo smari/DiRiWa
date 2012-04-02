@@ -1,61 +1,59 @@
 <html>
 <head>
 	<title>Digital Rights Watch</title>
-	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
 	<link rel="stylesheet" href="/static/css/style.css"/>
-	<link type="text/css" href="/static/css/ui-lightness/jquery-ui-1.8.17.custom.css" rel="Stylesheet" />
 	<script src="/static/js/jquery.js"></script>	
-	<script src="/static/js/jquery-ui-1.8.17.custom.min.js"></script>	
+	<script src="/static/js/bootstrap-dropdown.js"></script>
 	<script src="/static/js/diriwa.js"></script>
 </head>
 <body> 
  
-	<div class="topbar"> 
-		<div class="topbar-inner"> 
-			<div class="container-fluid"> 
-				<a class="brand" href="/"><span class="orange">Di</span><span class="lexp">gital </span><span class="orange">Ri</span><span class="lexp">ghts </span><span class="orange">Wa</span><span class="lexp">tch</span></a> 
-				<ul class="nav"> 
-					<li class="active"><a href="/">Home</a></li> 
-					<li><a href="/regions/">Regions</a></li> 
-					<li><a href="/topics/">Topics</a></li> 
-					<li><a href="/cases/">Cases</a></li> 
-				</ul> 
-				{% if user.is_authenticated %}
-				<p class="pull-right">Logged in as <a href="/accounts/profile/">{{user.username}}</a> (<a href="/accounts/logout/">Log out</a>)</p> 
-				{% endif %}
-			</div> 
+<div class="navbar navbar-fixed-top"> 
+	<div class="navbar-inner"> 
+		<div class="container">
+			<a class="brand" href="/"><span class="orange">Di</span><span class="lexp">gital </span><span class="orange">Ri</span><span class="lexp">ghts </span><span class="orange">Wa</span><span class="lexp">tch</span></a> 
+			<ul class="nav"> 
+				<li class="active"><a href="/">Home</a></li> 
+				<li class="dropdown" id="menu_regions">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#menu_regions">Regions <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+					{% for reg in menu_regions %}
+						<li><a href="/regions/{{reg.id}}/">{{reg}}</a></li>
+					{% endfor %}
+					</ul>
+				</li> 
+				<li class="dropdown" id="menu_topics">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#menu_topics">Topics <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+					{% for reg in menu_topics %}
+						<li><a href="/topics/{{reg.id}}/">{{reg}}</a></li>
+					{% endfor %}
+					</ul>
+				</li> 
+				<li class="dropdown" id="menu_cases">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#menu_cases">Cases <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+					{% for reg in menu_cases %}
+						<li><a href="/topics/{{reg.id}}/">{{reg}}</a></li>
+					{% endfor %}
+						<li><a href="#">Criminal cases</a></li> 
+						<li><a href="#">Free speech</a></li> 
+						<li><a href="#">Libel / defamation</a></li>
+						<li><a href="#">Other</a></li>
+					</ul>
+				</li> 
+			</ul> 
+			{% if user.is_authenticated %}
+			<p class="pull-right">Logged in as <a href="/accounts/profile/">{{user.username}}</a> (<a href="/accounts/logout/">Log out</a>)</p> 
+			{% endif %}
 		</div> 
 	</div> 
+</div> 
  
-	<div class="container-fluid"> 
-		<div class="sidebar"> 
-			<div class="well"> 
-				<h5>Regions</h5> 
-				<ul> 
-					{% for reg in menu_regions %}
-					<li><a href="/regions/{{reg.id}}/">{{reg}}</a></li>
-					{% endfor %}
-				</ul> 
-				<h5>Topics</h5> 
-				<ul> 
-					{% for reg in menu_topics %}
-					<li><a href="/topics/{{reg.id}}/">{{reg}}</a></li>
-					{% endfor %}
-				</ul> 
-				<h5>Cases</h5> 
-				<ul> 
-					{% for reg in menu_cases %}
-					<li><a href="/topics/{{reg.id}}/">{{reg}}</a></li>
-					{% endfor %}
-					<li><a href="#">Criminal cases</a></li> 
-					<li><a href="#">Free speech</a></li> 
-					<li><a href="#">Libel / defamation</a></li>
-					<li><a href="#">Other</a></li>
-				</ul> 
-			</div> 
-		</div> 
+	<div class="container"> 
 		<div class="content"> 
-			<div class="span8 right" style="text-align: center;">
+			<div class="pull-right btn-group">
 			{% if user.is_authenticated %}
 				{% block actions %}
 				{% endblock %}
@@ -66,9 +64,10 @@
 			{% block content %}	
 			{% endblock %}
 		</div> 
-	</div> 
-	<footer> 
-          <p><a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a> DiRiWa is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a href="/about/">About</a>. <a href="/about/credits/">Credits</a>.</p> 
+	</div>
+	<footer style="margin-top: 10em; font-size: 80%;">
+		<hr/>
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a> DiRiWa is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. <a href="/about/">About</a>. <a href="/about/credits/">Credits</a>.
 	</footer> 
 </body> 
 </html>
