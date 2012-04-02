@@ -37,9 +37,9 @@ for line in reader:
 			continue
 
 	# print signatory
-   if line[0]:
-      memrel, created = RegionMembership.objects.get_or_create(region=treaty, member=signatory)
-      memrel.type = line[0]
-      memrel.save()
-      if created:
-         print "Added %s to treaty %s" % (signatory, treaty.name)
+	if line[0]:
+		memrel, created = RegionMembership.objects.get_or_create(region=treaty, member=signatory)
+		memrel.type = line[0]
+		memrel.save()
+		if created:
+			print "Added %s to treaty %s" % (signatory, treaty.name)
