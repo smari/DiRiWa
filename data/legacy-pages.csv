@@ -1,4 +1,3 @@
-entity,section,text
 algeria,Access to Communications,"Access to Internet is increasing in Algeria: according to ITU, 4.5 million algerians have access to Internet, representing about 12.8% of the population (200,000 in 2001 according to the ministry of posts and telecommunications [http://www.itu.int/ITU-D/ict/statistics/at_glance/ARTI02_E.pdf source]). About two third of the users connect from home. More than 70% of the users complain about the bandwith and disrupting communications ([http://www.itu.int/ITU-D/ict/newslog/Algeria+Internet+Penetration+Estimated+At+128.aspx source]).
 
 "
@@ -46,17 +45,17 @@ censorship,Crowdsourced reports on Web Censorship,"
 * Freedom House 2011 [http://www.freedomhouse.org/template.cfm?page=664 A Global Assessment of Internet and Digital Media Freedom]
 
 "
-czechrepublic,Access to Communications,"
+czech republic,Access to Communications,"
 Access to communication technologies is similar to other EU countries. GSM communication both at voice and data level, internet communication provided most by large telcom corporation such as O2 or UPC; smaller ISP such as netbox.cz exists too. Traffic limitation is frequent only at GSM level, leaving home-internet without strict limitations.
 
 "
-czechrepublic,Censorship,"
+czech republic,Censorship,"
 There are no known cases of individual or targeted censorship to me at this time, please fix this if you know of something. All three GSM operators, however, filter data traffic through IWF black lists. [http://www.vodafone.cz/live/informace_nastaveni/blokovani.htm (vodafone cz)], [http://www.lupa.cz/zpravicky/telefonica-o2-potvrdila-filtrovani-stranek/ (Telefonica O2)], [http://t-press.cz/tiskove_zpravy/2010/1081/ (T-Mobile)]. 
 
 Under the Act No. 52/2009 Coll. ([http://portal.gov.cz/zakon/52/2009 source, cs]) it is forbidden to inform about names of the victims without their written consent. The restriction also apply to information about the state representatives - for example news cannot inform without written consent about the attack on prime minister. Also it is forbidden to release the leaked police evidence, especially the lawful interception. Therefore the news cannot inform about the coruption suspicion if it came from such source. The penalty for infraction is 1.000.000 Kč (~ 40.000€) (5.000.000 Kč if it is in newspapers, radio, movie or on internet) or 3 years in jail (1 to 5 years if it is in newspapers, radio, movie or on internet) (§ 180 Act No. 40/2009 Coll., Penal code [http://portal.gov.cz/zakon/40/2009/180 source, cs]). The independent blogs, even the participants of discussions, are considered in the same way as the big news sites on the internet, so the larger penalty applies on the bloggers and people commenting the article. (The Act is called The muzzle act - ""náhubkový zákon"").
 
 "
-czechrepublic,Surveillance,"
+czech republic,Surveillance,"
 === Data retention ===
 
 Telecommunication access logs has to be recorded under European data retention directive 2006/24/EC ([http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:105:0054:0063:EN:PDF CELEX 32006L0024]) since 2008. Databases are accessible by police, national security agencies. The retention period is 6 months minimal, 12 months maximal. [http://portal.gov.cz/zakon/127/2005/97 (source, cs)]
@@ -66,7 +65,7 @@ Telecommunication access logs has to be recorded under European data retention d
 In February 2011 the Education Ministry has been in the news for other reasons during the past few days. MfD reported two former directors of the minister's cabinet have been spying on approximately 20 officials, reading their e-mail correspondence and hacking into their computers. The minister has distanced himself from the scandal, but the newspaper reports he must have known about the surveillance. [http://www.romea.cz/english/index.php?id=detail&detail=2007_2188 (en)], [http://zpravy.idnes.cz/lide-okolo-dobese-spehovali-sve-podrizene-podle-mf-dnes-jim-cetli-postu-133-/domaci.asp?c=A110222_212156_domaci_abr (cz)], [http://www.ct24.cz/vysilani/2011/02/23/1096898594-211411000370223-22:00-udalosti-komentare/?streamtype=WM3 (cz video)].
 
 "
-czechrepublic,Intellectual Property,"
+czech republic,Intellectual Property,"
 === Copyright ===
 
 [http://www.wipo.int/wipolex/en/text.jsp?file_id=137175 Law act 121/2000 (not current version!), en], ([http://portal.gov.cz/zakon/121/2000 current version, cs]) defines the copyright, there are some discussion about possible amendment of this act. OSA and Dilia are exercising their rights under § 95 of copyright act to collect ""author's fee"". This law has a large controversy in digital world as it applies itself also on blank media storage calculated off from its size. In other words, you pay a fix fee per megabyte if you're buying a blank media, even if you're going to use it to storage non-copyrighted content. At this day, it's 12 Kč per 1G of storage media, 10 Kč per 40G of hard drive, 5 Kč per blank DVD disk... ([http://portal.gov.cz/zakon/488/2006 source, cs])
@@ -76,7 +75,7 @@ czechrepublic,Intellectual Property,"
 Patents portfolios are not very wide-spread in Czech Republic. 7% of all parents are related to ICT. [http://www.czso.cz/csu/tz.nsf/i/patenty_v_ceske_republice_v_letech_1995_2009 (source, cs)]
 
 "
-czechrepublic,Agencies and Groups,"
+czech republic,Agencies and Groups,"
 * http://www.bsa.org/country.aspx?sc_lang=cs-CZ - BSA is active but has no legal background
 * http://www.cpufilm.cz/ - Czech Anti-Piracy union
 * http://www.osa.cz/osa---english.aspx - OSA is appointed by the Czech ministry of culture to collect money ""on behalf"" of musical artists
@@ -644,7 +643,7 @@ which gives no hint that the requested Web site is actively blocked.
 tunisia,Censorship,"* Internet connectivity was brought down in the city of [http://en.wikipedia.org/wiki/Sidibouzid Sidibouzid] by authorities amidst protests on December 19th 2010, as a method to stifle communications amongst protesters. Information still managed to get out through various human rights groups in the region; see: [http://24sur24.posterous.com/#!/36859852 24sur24] [http://nawaat.org/portail/ Nawaat] [http://www.babtounes.com/ Babtounes].
 
 "
-uk,Censorship,"
+united kingdom,Censorship,"
 A lot of corporate censorship exists in the UK in the form of [[superinjunction]]s, injunctions which are themselves are under special injunction so that their subject matter may not be disclosed.
 
 On December 13th, 2010, [http://www.zdnet.co.uk/blogs/security-bullet-in-10000166/met-police-take-down-protest-advice-blog-10021068/ a website offering advice to protesters was taken down] by Internet hosting company [[JustHost.com]] at the request of the London Metropolitan Police. ""We were concerned this website was giving information about destroying evidence,"" said the police spokesman.
@@ -652,7 +651,7 @@ On December 13th, 2010, [http://www.zdnet.co.uk/blogs/security-bullet-in-1000016
 There is discussion amongst politicians to take up [http://www.guardian.co.uk/society/2010/dec/19/broadband-sex-safeguard-children-vaizey?cat=society&type=article opt-out Internet filtering for pornography].
 
 "
-uk,Surveillance,"
+united kingdom,Surveillance,"
 There are over 2 million [[CCTV]] cameras in the UK; a great number of which are in London, or roughly half a million.
 
 "

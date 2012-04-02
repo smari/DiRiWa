@@ -16,9 +16,9 @@
 <div class="span5">
 </div>
 
-{% for discussion in topic.entitytopic_set.all %}
+{% for discussion in topic.section_set.all %}
 <div class="span16 topic">
-<h2><a href="/countries/country/{{discussion.country.id}}">{{discussion.country.name}}</a></h2>
+<h2><a href="/regions/{{discussion.region.id}}">{{discussion.region.name}}</a></h2>
 {{discussion.wikitext|safe}}
 <a href="/sections/edit/{{discussion.id}}/" class="btn small right">Edit this discussion</a>
 </div>

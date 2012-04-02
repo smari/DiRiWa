@@ -2,6 +2,8 @@
 
 # -*- coding: utf-8 -*-
 #    This file is part of diriwa.
+# Usage:
+#	python mw-importer.py ../data/legacy/* > ../data/legacy-pages.csv
 
 import sys, re, csv
 
@@ -22,6 +24,6 @@ for entity in sys.argv:
     inp.close()
 #print results
 
-writer = csv.writer(sys.stdout)
+writer = csv.writer(sys.stdout, dialect="excel")
 #writer.writerow(['entity', 'section','text'])
 writer.writerows([(v[0], v[1], ''.join(v[2])) for v in results])
