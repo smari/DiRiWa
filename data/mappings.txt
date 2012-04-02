@@ -1,0 +1,5 @@
+s/Bahamas/"The Bahamas"/
+s/Holy See/"Vatican City"/
+s/Korea/"South Korea"/
+s/Kyrghyz Republic/Kyrgyz Republica/
+s/The former Yugoslav Republic of Macedonia/Macedonia/
