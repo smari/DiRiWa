@@ -1,0 +1,106 @@
+{{Copyright:berne}}
+{{Copyright:UCC Geneva}}
+{{Copyright:UCC Paris}}
+{{Copyright:trips}}
+{{Copyright:WCT}}
+
+The digital rights situation in France is worrying. It was placed on Reporters Without Borders's watchlist in its 2011 report on cyber-censorship.
+
+== Access to Communications ==
+
+=== Internet market and penetration ===
+
+Internet access in France is generally available to all. The French ISP market is one of the most competitive in Europe, after an overhaul of telecoms regulation aimed at favoring innovative entrants in the early 2000's. Although there is a growing concentration in the last years, this has allowed for an important increase in penetration rates (now around 70%)<ref>﻿Croutte, Patricia. 2010. La diffusion des technologies de l’information et de la communication dans la société française.</ref>, with some of the highest speeds in Europe.
+
+=== Net neutrality ===
+
+Net neutrality is weakly protected. Telecoms regulator Arcep launched a wide public consultation in the Spring of 2010, trying to find the right way to implement the EU provisions of the telecoms package that regulate traffic discrimination. In October 2010, Arcep made [http://www.arcep.fr/uploads/tx_gspublication/net-neutralite-orientations-sept2010-eng.pdf 10 proposals] to protect Net neutrality. Although these provide an comprehensive conceptual toolbox to protect Net neutrality, so far the government and lawmakers prefer to stick to the status quo, waiting on the EU to make a move on the matter.
+
+== Censorship ==
+
+The [http://en.wikipedia.org/wiki/Law_on_the_Freedom_of_the_Press_of_29_July_1881 Law on the Freedom of the Press] of 29 July 1881 speech includes a rather long list of categories of speech that are illegal in France, such as "incitations to hate", "incitations to drug use", "apologia of war crimes", defamation and insults.
+
+On the Internet, illegal speech can be challenged through either a judiciary injunction or a takedown notice, as provided by the [http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=LEGITEXT000005789847&dateTexte=vig LCEN 2004-575 of June 21st], which transposes the EU [[e-Commerce directive]]. Filtering of child abuse material by the administrative authority is also being implemented, after the adoption of a law in February 2011.
+
+=== Notice and Takedown ===
+
+The law provides that Internet service providers are exempted of civil and criminal responsibility for infringing content posted by third parties if they acted promptly to remove or block access to it as soon as they discovered it. Today, "cease and Desist" letters are frequently used, even though the LCEN makes it illegal to threaten someone with legal action based on fake claims.
+
+When the LCEN was voted by the Parliament, the Constitutional Council restricted the scope of the law by creating the category of "manifestly illegal", i.e content that is deemed illegal even in the absence of a court order, and for which the ISP is required to act promptly to prevent access to the said material. This category was initially limited to hate speech and pedophilia. With this ruling, the Council aimed at avoiding legal uncertainty for ISP (it stressed that is was difficult, “even for a lawyer”, to characterize a given information as illegal), thus protecting freedom of communication of Internet users.
+
+However, this protective notice and takedown regime is undermined by its extension of the types of content that can be deemed “manifestly illegal” and which ISPs are required to remove upon notification. Through case law, judges have gone beyond the above-mentioned types of content and condemned host providers for not expeditiously removing copyright-infringing<ref> Cour d'appel de Paris, June 7th, 2006, Tiscali Media v.Dargaud. http://www.laquadrature.net/wiki/Jurisprudence_sur_la_communication_en_ligne#CA_Paris.2C_7_juin_2006.2C_Tiscali_Media_c.2F_Dargaud_Lombard.2C_Lucky_Comics</ref> and defamatory content<ref>Tribunal de Grande Instance de Paris, November 15th, 2004, Juris Data n° 2004-258504</ref>. In a 2008 ruling, a Parisian court went against the Constitutional Council decision by expanding the obligation for a host provider to act expeditiously to remove content that is “likely” to be unlawful<ref>Tribunal de Grande Instance de Paris, 15 avril 2008, Jean-Yves Lafesse c/ Dailymotion.
+http://www.juriscom.net/jpt/visu.php?ID=1057 </ref>.
+
+=== Judiciary regulation of online speech ===
+
+The LCEN gives juges the possibility to require a hoster or a Internet access providers to take "any measure" to prevent injury or damage caused by online content (article 6-I-8). In practice, this provision has led to injunctions for content filtering, such as in the infamous case of the negationist webiste Aaargh, in which the French Court of Cassation confirmed a court order forcing all Internet Access Providers operating in the country to block access to this antisemitic website hosted in the United States.<ref> Aaargh case. Decision n° 707 of June, 19th, 2008. Cour de cassation, First civil chamber. http://www.courdecassation.fr/jurisprudence_2/premiere_chambre_civile_568/arret_no_11682.html</ref>.
+
+Judiciary filtering was reasserted in the context of the HADOPI law aimed at tackling the sharing of cultural works over the Internet. In its article 10, the law grants judges the power to order “all measures needed to prevent or halt such damage to a right of authorship or a related right, against any entity able to help remedy it”.
+
+The 2010 law on online gambling also provides such judiciary filtering measures. In August 2010, a judge ordered French IAPs to block access to a website hosted in the United Kingdom, explicitly referring to various Internet blocking methods, such as Deep Packet Inspection, that are very controversial for of their adverse effects on privacy<ref>Béjot Michel and Bouvier Caroline, 2010, « France: Gambling and Betting on the Internet: French Courts Steps In and Requires the Service Providers to Block an Illicit Website », Address : http://www.gala-marketlaw.com/joomla4/index.php?option=com_content&view=article&id=291&Itemid=182</ref>.
+
+=== Administrative regulation of online speech ===
+
+Administrative censorship of online content is regularly mentioned by various French politicians. In 2011, France has adopted an administrative censorship scheme under the guise of child protection. The [[LOPPSI]] bill provides that the Homeland Ministry maintains a blacklist of websites including child pornographic content to which French IAPs are required to block access. [http://www.laquadrature.net/en/administrative-net-censorship-adopted-in-france-pedophiles-unworried According] to advocacy group La Quadrature du Net, "the Trojan horse of child protection opens the door to the generalized censorship of the Internet".
+
+In December 2010, the Ministry of Economy, which as competence over digital services, asked one of its bodies to reflect upon ways to prevent whistle-blowing website [[WikiLeaks]] from being hosted in France. However, no charges were pressed and the alleged infraction was never defined<ref>﻿Dehesdin, Cécile. “Eric Besson peut-il faire fermer Wikileaks?”, December 2010. http://www.slate.fr/story/31177/eric-besson-wikileaks-hebergeur</ref>. The French hoster of WikiLeaks, OVH, asked judges to determine whether WikiLeaks violates French law. In their [http://www.laquadrature.net/wiki/Jurisprudence_sur_la_communication_en_ligne#TGI_Lille_.2B_TGI_Paris.2C_6_d.C3.A9cembre_2010.2C_OVH.2C_Wikileaks decisions], the judges refused to say whether WikiLeaks was legal or not, invoking procedural hurdles. As of January 2011, WikiLeaks is still hosted in France by OVH.
+
+== Surveillance ==
+Since 2001, privacy and data protection rights in France have been particularly undermined by two laws: the [http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=LEGITEXT000005631673&dateTexte=20110104 Loi sur la Sécurité Quotidienne] (LSQ, Daily Safety Law), adopted in 2001, and the [http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000000412199 Loi sur la Sécurité Intérieure] (LSI, Homeland Security), adopted in 2003.
+
+Police normally does not spy on private communications. However, recent scandals revealed that journalists have been spied on by secret services and that thousands of phone lines are scrutinized every year without a judicial authorization.
+
+=== Internet surveillance ===
+Internet Access Providers are required to keep a record of their customers' Internet activity and e-mail traffic for at least a year. The LSI grants law enforcement immediate access to the computer data of telecommunications operators, as well as other public and private institutions. Authorities can ask encryption tools providers to give them access to their codes so as to be able to read encrypted online messages.
+
+In February 2011, the government passed a decree establishing the data that must be retained, at the transmission or modification of online content, by the hosting companies, during one year. The decree was described criticized for being much broader that was is required by law, since the information that must be retained include the identifier of the connection at the origin of the communication, the identifier attributed by the information system to the content that makes the object of the operation, the types of protocols used for the connection and for the content transfer, the nature of the operation, the date and hour of the operation and the identifier used by the author of the operation, when provided. Moreover, the hosting providers must also preserve, for one year after the deletion of an account, even more sensitive data such as the date and time when an account is created and the identifier of the connection, his/her complete name, pseudonyms, associated post addresses, e-mail and associated addresses, telephone numbers and even password. Judicial authorities as well as anti-terrorist law enforcement agencies will be able to access such data.
+
+=== Video-surveillance ===
+
+With the LOPPSI bill, a "newspeak word" has been created for video-surveillance : video-protection. Huge investments have been made by municipalities, although disputes over who should pay for their maintenance has delayed their adoption. (Cities say it must be paid by the police prefecture, which says the opposite). Big cities like Lyon and Paris have a dense video-surveillance network but it is notorious that the system is undermanned.
+
+== Intellectual Property ==
+
+=== Copyright ===
+One of the biggest issue regarding copyright in France is the extent to which case law has undermined the rights of the public in their relation to copyrighted works (for instance the right to private copy).
+
+Downloading or uploading copyrighted material without authorization is both a civil and a criminal offence. France has been the inventor and biggest proponent of "three strikes" schemes to crack down on online file sharing. In June 2008, the government introduced a bill aimed at establishing an executive agency ([[HADOPI]]) endowed with the power to disconnect alleged file-sharers from the Internet for a duration of a up to a year after two warnings.
+
+The law was blocked by a historic [http://www.conseil-constitutionnel.fr/decision//2009/decisions-par-date/2009/2009-580-dc/decision-n-2009-580-dc-du-10-juin-2009.42666.html decision] of the French Constitutional Council, which asserted that access to the Internet was a fundamental right protected by Article 11 of the 1789 Declaration of the Rights of Man and of the Citizen. This article states that "The free communication of ideas and opinions is one of the most precious of the rights of man". The Council added that Internet now plays an instrumental role in guaranteeing the effectiveness of that right – free speech –, emphasizing its importance for citizens' "participation to the democratic life and the expression of ideas and opinions". 
+
+Following this ruling, a second HADOPI law was presented to ensure that the judiciary authority rather than the HADOPI (an administrative agency) would be competent to pronounce restrictions of Internet access (1500€ fine and a suspension of Internet access for up to one month). The law was finally adopted in the Fall of 2009, and the first e-mail warnings were sent in October 2010. However, observers doubt that any sanction will ever be pronounced due to the political risk the government would face.
+
+=== Patents ===
+Software Patents, as for all Europe, are not acceptable according to EU law. On the other hand, numerous attacks by groups in favor of software patents are being launched against this position. The European Patent Office is also famous for a strange practice : despite software patents being unenforceable in EU, it still accepts to register them. The trick is to patent a "device running the algorithm X" instead of "algorithm X". No such patent as been ever tested to court.
+
+== Right to data ==
+
+=== Freedom of access ===
+
+=== Open government data ===
+
+=== Open Standards ===
+
+== Agencies and Groups ==
+
+=== Digital and Information Related Agencies ===
+* [http://www.arcep.fr/index.php?id=1&L=1 Arcep] is the independent regulator in charge of the telecommunications and postal sectors.
+* [http://www.hadopi.fr HADOPI] is a governmental agency promoted by the government of Nicolas Sarkozy to crack down on Internet file sharing.
+* [http://www.ddm.gouv.fr/ Direction du Développement des Médias] (DDM) is an administrative office attached to the Prime Minister. The DDM is in charge of monitoring the media market, encouraging plurality of the press and to prevent excessive concentrations of ownership.
+* [http://www.csa.fr/ CSA] is the Higher Audio-Visual Council (as noted in [http://wikileaks.ch/cable/2007/01/07PARIS306.html#par17 Wikileaks cable]) and is competent for traditional audio-visual media. Its role in Internet regulation is limited to traditional television (linear service) and video-on-demand (non-linear services). Private websites and websites made of user-generated content are not covered.
+* [http://www.arjel.fr/ ARJEL] is a governmental agency regulating online gambling.
+* [http://www.cnil.fr/ CNIL] is an independent administrative authority in charge of protecting privacy and personal data.
+
+=== Digital rights groups in France ===
+
+* [http://www.laquadrature.net/ La Quadrature Du Net] is a very active group that lobbies at the national and European level.
+* [http://www.april.org/ APRIL] is a free software promotion foundation. It has a lot of members in the industrial and academic world.
+* [http://www.regardscitoyens.org/ Regards Citoyens] is a group calling for the release of public data as well as greater transparency on the functioning of democratic institutions.
+* [http://www.partipirate.org Parti Pirate] is the French Pirate Party.
+* [https://www.dg-sc.org/ DegenereScience] is a French hacker organisation.
+* [http://www.ourdeclaration.net/ Our-declaration] Une déclaration des droits des Internautes traduite en sept langues. / A declaration of the Internet users rights in seven languages.
+* [http://free.korben.info/] hosts a list of practices, resources and tools for free internet.
+
+
+==References==
+{{Reflist|2}}

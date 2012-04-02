@@ -1,0 +1,104 @@
+{{Copyright:berne}}
+{{Copyright:UCC Geneva}}
+{{Copyright:UCC Paris}}
+{{Copyright:trips}}
+{{Copyright:WCT}}
+
+The digital rights situation in Hungary is (worrying)
+
+== Access to Communications ==
+The national telecom authority [http://www.elitehub.hu/hu/hir/20090801/elsofoku-hatarozat-a-upc-chello-korlatozasaval-kapcsolatban ruled], that it is illegal to throttle bandwith, there are only three cases where throttling is lawful:
+
+* threat to the integrity of the network
+* re-selling bandwidth
+* unpaid bills
+
+Anyway, all ISPs in Hungary do have some kind of throttling system running.
+
+== Censorship ==
+The Hungarian parliament has accepted a new law which allows a government body to [http://www.dw-world.de/dw/article/0,,6362238,00.html levy fines for news reporting not deemed to be 'politically balanced']
+
+== Surveillance ==
+=== Internet surveillance ===
+The popular Hungarian online news portal Index [http://index.hu/tech/jog/orwell1/ reported] in 2002 that the National Security Services installed black boxes at every ISP quoting a local sysadmin "Gentlemen in suits arrived and asked for a transparent port to the BIX [Budapest Internet Exchange] and the international connecton. They used it to hook up computers that we're not allowed to touch."
+
+In February 2010 Index published [http://index.hu/tech/2010/02/01/gazdat_cserel_a_kapitalis_bongo/ another article] about the ''[http://neti.com/en/products/bongo BONGO integrated monitoring system]'' which collects and provides data to certain parties (including private companies, even foreign ones).
+
+=== Data Retention ===
+The term was had to be reduced from 3 years to 2 years because the DRD does not allow for longer times and Hungary had already a Data Retention regulation{{Citation needed}}. The hungarian civil liberties union (TASZ) sent a study on the Romanian and German constitutional decisions{{Citation needed}} .
+
+== Intellectual Property ==
+
+=== Copyright ===
+[http://www.copyright-watch.org/state/hu/act-no-lxxvi-1999-on-copyright/2007-01-01 an english tranlation of the hungarian copyright law] by Artisjus is available via the cool new EFF site copyright watch.
+* The tax on writable DVDs, USB sticks, memory cards, etc. is so high, that it makes sense to travel to a neighboring country and buy unlicensed storage abroad.
+* Servers of torrent and SMS based fileshares are regularly confiscated.
+* The ministry of education is running a campaign pushed by the entertainment industy.
+* Private citizens are usually not targeted by lawsuits. (ProArt is only targeting illegal commercial distributors.)
+* Education in copyright is very low.
+* The schools are dominated by Microsoft software (Campus and MSDNAA).
+
+=== Patents ===
+Hungary is not really strong on patents ‒ it's only a very small market after all. The patent regulation is according to the EU law. Usually most corporations in Hungary have innovation programmes, which they use to collect the ideas of the hungarian workforce. These ideas are usually added to the corporations international patent pool. All the companies having most patents in Hungary are from the pharma industry.
+
+Here is the [http://www.mszh.hu/hivatalrol/evjel2008.pdf 2008 report by the HPO]. Somewhere in the middle it gets interesting with a couple of pages of statistics:
+
+<blockquote>Not more than 9% of the right-holders of valid patents were Hungarian (12% in the previous year), thus, only 1073 patents were owned by Hungarians. 91% of the right-holders were foreigners, of which the German (26%) and the US (15%) right-holders were in the lead. Of the European patents validated to the territory of Hungary, 32% belonged to German, 12% to US, 10% to French and 9% to Swiss right-holders.</blockquote>
+
+== Agencies and Groups ==
+=== [http://www.artisjus.hu/ Artisjus] ===
+
+* music writers and some literary authors,
+* a bunch of hungarian labels,
+* + emi, universal, warner. 
+
+=== [http://www.proart.hu/ ProArt], alliance for copyright ===
+Members are
+* Artisjus,
+* [http://www.mahasz.hu/ hungarian record industry association (MAHASZ)],
+* [http://www.eji.hu/ Association of the Arts Unions Bureau for the Protection of Performers' Rights (EJI)],
+* [http://www.filmjus.hu/ Hungarian society for the protection of audio-visual authors' and producers' rights (FilmJUS)],
+* [http://www.hungart.org/ HUNGART]. 
+
+=== BSA ===
+the usual suspects with some Hungarian companies added 
+
+=== [http://www.asva.hu/ ASVA] (movies) ===
+* Hungarian companies and
+* Disney, Warner, Sony, Universal, MGM, 20th Century Fox, Paramount. Mostly represented by the same guy: Nicolas Znamensky, who is also on the board.
+* President recently resigned (2009 Dec).
+
+=== [http://www.hamisitasellen.hu/ HENT] ===
+This is an organization steered by the justice ministry. These guys were having a roundtable in spring 2009 about the Hungarian three-strikes implementation. Since then nothing is heard, except for the occasional PR campaign, where they are disseminating entertainment industry propaganda.
+
+Members are
+* Hungarian Movie Distributors Association,
+* Hungarian Patent Office,
+* American Chamber of Commerce in Hungary,
+* National Consumer Protection Authority,
+* [http://english.ivsz.hu/ Association of IT, Telco & Electronics Companies in Hungary],
+* ProArt,
+* police,
+* ASVA,
+* BSA,
+* [http://www.igy.hu/ Association of Innovative Pharmaceutical Manufacturers],
+* and a bunch of ministries, etc.
+
+=== Digital and Information Related Agencies ===
+
+=== Digital rights groups in Hungary ===
+* [http://odfa.hu Open Document Format Alliance]
+* [http://tasz.hu Hungarian Civil Liberties Union] - also other active outside the digital realm
+* Open Standards Alliance
+
+== Political stances ==
+
+== Right to data ==
+* is legislation copyrighted? no - but it is published by a company that adds 'value' and so a copyright.
+
+=== Freedom of access ===
+* there is a law{{Citation needed}}
+
+=== Open government data ===
+
+=== Open Standards ===

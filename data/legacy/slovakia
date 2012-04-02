@@ -1,0 +1,113 @@
+{{Copyright:berne}}
+{{Copyright:UCC Geneva}}
+{{Copyright:UCC Paris}}
+{{Copyright:trips}}
+{{Copyright:WCT}}
+
+The digital rights situation in Slovakia is worrying.
+
+== Access to Communications ==
+
+Due to very good broadband access and high costs for throttling devices, throttling is common only in mobile networks. Most cable and fiber ISPs don't even count traffic. Counting of transferred data on the other hand is very common on DSL, because the major DSL last-mile owner (Slovak Telecom, member of Deutsche Telecom) bills all providers for using their last-mile by traffic (except for weekends). Some providers providing flat-rate have to do throttling based on fair-use policy to avoid costs from Slovak Telecom.
+
+The coverage of alternatives to DSL is very good in larger cities and it is possible to get unthrottled and only speed-limited Internet connection.
+
+== Censorship a Network Neutrality ==
+
+All mobile operators are filtering internet traffic using IWF blacklist, [http://globalvoicesonline.org/2009/11/24/slovakia-mobile-internet-providers-put-an-end-to-internet-neutrality/ the situation regarding network neutrality is critical in Slovakia]
+
+=== Slovak O2 ===
+
+In addition to the child protection, Slovak O2 also shapes some specific network ports.
+
+[http://www.sk.o2.com/o-nas/spolocenska-zodpovednost/ochrana-deti-v-sieti Child protection]
+[http://www.dsl.sk/article.php?article=9650 Traffic shaping of specific ports]
+
+=== Slovak Orange ===
+
+Slovak Orange makes child protection using IWF blacklist.
+
+[http://www.orange.sk/web/onas/medialne_centrum/monitoring_november_clanok5_detail.html Child protection]
+[http://www.dsl.sk/article.php?article=8184 Orange started to block illegal pages]
+
+Orange also sells some phones with their branded firmware (e.g. Nokia E51) that blocks official VoIP functionality. This can be solved by changing its product code (to the Central Europe), but this operation automatically leads to the warranty loss.
+
+=== Slovak T-Mobile ===
+
+Slovak T-Mobile makes child protection using IWF blacklist.
+[http://www.dsl.sk/article.php?article=8340 T-Mobile started to block illegal pages]
+
+== Surveillance ==
+
+Voice and SMS surveillance is required by law. Holders of the telecommunication license have to provide direct unmonitored access to their network at the operator's cost (the devices are owned by Slovenska Informacna Sluzba - an intelligence agency and Ministry of Interior, which runs police). 
+
+There are no direct monitoring devices in ISP networks, but ISPs have to cooperate based on judge approval. They have to provide full traffic dumps, logs, etc. Slovak police seems to almost always claim it is going after child pornography distributors, even when this is not the case. They say this to convince operators to cooperate (everyone "knows" child pornography distribution is bad and they believe that technician at operators' are more willing to help fight this crime than any other). They have no direct control or knowledge if the operator provides all the information.
+
+== Intellectual Property ==
+
+There are takedown notices when copyright and/or trademarks are involved, but these are usually not very successful. There has been a case of fake pages of "Orange" operator and one hacker registered t-zones.sk domain before Eurotel was aquired by T-Mobile. They tried to take the site down, but in the end they just paid whatever the guy asked for the domain (the price has not been disclosed).
+
+Takedown based on trademark abuse has basis in .sk domain registry rules (which is weird, because there can be several different companies having the same trademark, they are based on product areas. I know of matrix.sk domain, which was requested by certain cosmetics company based on trademark issues and it was offered to the other holders of "Matrix" trademark: car manufacturers, ...). There is no clear rule about this.
+
+=== Copyright ===
+
+Slovak authorship law (it's not copyright, that is a different concept) is very problematic. It does not allow distribution under free or open-source licenses. The law clearly states, that author has a right to get reward for his or her work. While they can say that they don't want reward in any particular case (in relation to one licensee), it is unconstutional to let go off your right in general. Publication under open-source license is problematic, because we don't know if the author does not abuse this.
+
+The click-wrap licenses are also invalid, every license has to be a contract and that has to be in writing or using qualified electronic signature. For Free Software, this means, that you have no right to use the software unless having a written contract.
+
+There have been no abuses of these problems so far, there is an active Creative Commons community and [http://www.soit.sk/|Society for Open Information Technologies] trying to push reforms in authorship law.
+
+There is a fair use doctrine, which is also a reason for collecting essentially tax from copy machines, CDs, DVDs and other media and also burning devices. These go back to authorship alliances (which are monopolized by state, but not controlled by them, which is very dangerous) and are distributed in a very non-transparent way to the authors, that are members of these.
+
+During June 2011, a minor internet revolution happened against [http://www.soza.sk SOZA], which illegally charged several bloggers for linking embedded youtube videos on their side.
+
+=== Patents ===
+
+Slovakia is not really strong on patents ‒ it's only a very small market after all. The patent regulation is according to the EU law. Some authors have been awarded software patents by national patent office in the past (for example for phone encryption). 
+
+== Agencies and Groups ==
+
+[http://www.bsa.org/country.aspx?sc_lang=sk-SK Business Software Alliance]
+
+[http://soza.sk/ Slovenský ochranný zväz autorský -- Music Industry alliance]
+
+[http://www.lita.sk/en/index.php LITA - society of (literary) authors]
+
+[http://itas.sk/ IT Association of Slovakia] - Association of IT companies, often fights against open standards, has members in goverment comitees. The representatives usually work for (and are paid by) Microsoft.
+
+[http://www.informatika.sk/ Slovak Informatics Society] - Society of slovak informatics professionals (people, not organizations), mainly from academia.
+
+=== Digital rights groups in Slovakia ===
+[http://www.soit.sk/ Society for Open Information Technologies]
+
+[http://www.progressbar.sk/ Progressbar - Bratislava hackerspace]
+
+[http://www.hysteria.sk/ Hysteria - an informal hacker association] (has been organizing demonstrations, publishes a magazine about digital rights)
+
+[http://www.skosi.org Slovak Open Source Initiative] and [http://www.sklug.sk/ Slovak Linux User Group] are now more or less defunct organizations, most people joining SOIT instead.
+
+== Rights to Information ==
+
+=== Freedom of Information Act ===
+
+Law 211/2000 states that all information (except for state secrets, personal information, ...) goverment or any public institution collects or has has to be made available on request (they have 30 days to fulfill every request). 
+
+This is used heavily by the citizens to obtain all possible information. 
+
+Mainly due to corruption in IT sector, all contracts that are made between goverment organizations and private sector are being released at [http://www.zmluvy.gov.sk/ Central Registry of Contracts]. This will probably extend to all public organizations in the beginning of 2011.
+
+
+=== Open Data ===
+
+The freedom of information act states, that all data in information systems, that are not secret or private information have to be proactively made public. This is not done properly and is being more or less ignored. There are no format standards, but due to these requirements, some of IT data are released.
+
+Organizations like [http://www.fair-play.sk/ Fair Play Alliance] and [http://transparency.sk/ Transparency International Slovakia] have been releasing raw data they obtained by using Freedom of Information Act. They had to often scan the data from paper, but it's out there ([http://datanest.fair-play.sk/pages/index Datanest]). Their application of [http://znasichdani.sk ZNasichDani.sk] (From Our Taxes) won the first place of application at [http://opendatachallenge.org/#winners Open Data Challenge].
+
+It is not known, if information obtained using this act can be released to other parties (there's no mention of copyright), but there has so far been no problem when journalists have been using these information.
+
+
+=== Open Standards ===
+
+Standards for Information Systems of Public Administration have only open standards for text documents (all public administration organizations for example have to be able to read Open Document Format, it is not that true in practice, but they usually bug their local administrator to install OpenOffice on one machine and they use it for conversions if citizens require it - some of them do:). For all other formats except electronic forms, there are mainly open standards.
+
+The biggest problem is electronic forms (such as tax declarations, etc.), that are based on 602XML (a product of Czech company Software602). These are not open, run reliably only on MS Windows and are more or less mandatory if you want to communicate electronically with some public institutions. This format is also supported by qualified electronic signature, also proprietary.

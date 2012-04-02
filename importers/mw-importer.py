@@ -23,5 +23,5 @@ for entity in sys.argv:
 #print results
 
 writer = csv.writer(sys.stdout)
-writer.writerow(['entity', 'section','text'])
+#writer.writerow(['entity', 'section','text'])
 writer.writerows([(v[0], v[1], ''.join(v[2])) for v in results])
