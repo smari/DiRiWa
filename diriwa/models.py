@@ -8,21 +8,8 @@ class Language(models.Model):
 	def __unicode__(self):
 		return self.name
 
-class Entry(models.Model):
+class Entity(models.Model):
 	pass
-
-
-class RegionalEntity(Entry):
-	name		= models.CharField(max_length=200)
-	shortname	= models.CharField(max_length=70, blank=True)
-	isocode		= models.CharField(max_length=3, blank=True)
-	map			= models.FileField(upload_to="static/img/maps/", blank=True)
-
-	class Meta:
-		ordering	= ["shortname"]
-
-	def __unicode__(self):
-		return self.name
 		
 
 class RegionType(models.Model):
@@ -33,46 +20,26 @@ class RegionType(models.Model):
 		return self.name
 
 
-class Region(RegionalEntity):
+class Region(Entity):
+	name			= models.CharField(max_length=200)
+	shortname		= models.CharField(max_length=70, blank=True)
+	isocode			= models.CharField(max_length=3, blank=True)
+	map			= models.FileField(upload_to="static/img/maps/", blank=True)
 	type			= models.ForeignKey(RegionType)
-	# url			= models.URLField(blank=True, null=True)
-	
+	population		= models.IntegerField(blank=True, default=0)
+	url			= models.URLField(blank=True, null=True)
+	tld			= models.CharField(max_length=20, blank=True, null=True)
+	itu_t			= models.CharField(max_length=20, blank=True, null=True)
+	deptype			= models.CharField(max_length=50, blank=True, null=True)
+	depsubtype		= models.CharField(max_length=50, blank=True, null=True)
+	capital			= models.CharField(max_length=100, blank=True, null=True)
+	currency		= models.CharField(max_length=100, blank=True, null=True)
+	languages		= models.ManyToManyField(Language, blank=True)
+	regionmembers		= models.ManyToManyField("Region", blank=True, through="RegionMembership")
+
 	class Meta:
-		ordering	= ["name"]
-		
-	def population(self):
-		return sum([x.population for x in self.country_regions.all()])
-			
-	def agreements(self):
-		agreements = []
-		for i in self.country_regions.all():
-			agreements.extend(i.treaties())
-			agreements.extend(i.unions())
-		return set(agreements)
-		
-	def __unicode__(self):
-		return self.name
+		ordering	= ["shortname"]
 
-
-
-class RegionalEntityLocalName(models.Model):
-	language	= models.ForeignKey(Language)
-	entity		= models.ForeignKey(RegionalEntity)
-	name		= models.CharField(max_length=200, blank=True)
-
-
-class Country(Region):
-	population	= models.IntegerField(blank=True, default=0)
-	tld		= models.CharField(max_length=20, blank=True, null=True)
-	itu_t		= models.CharField(max_length=20, blank=True, null=True)
-	deptype		= models.CharField(max_length=50, blank=True, null=True)
-	depsubtype	= models.CharField(max_length=50, blank=True, null=True)
-	capital		= models.CharField(max_length=100, blank=True, null=True)
-	currency	= models.CharField(max_length=100, blank=True, null=True)
-	regions		= models.ManyToManyField(Region, related_name="country_regions")
-	languages	= models.ManyToManyField(Language, blank=True)
-	
-	
 	def safe(self):
 		if self.shortname == "":
 			self.shortname = self.name
@@ -83,25 +50,48 @@ class Country(Region):
 		return not (self.name == self.shortname)
 		
 	def treaties(self):
-		return self.regions.filter(type__name="Treaty")
+		return self.member_of.filter(region__type__name="Treaty")
 
 	def unions(self):
-		return self.regions.filter(type__name="Union")
+		return self.member_of.filter(region__type__name="Union")
 
 	def geographical(self):
-		return self.regions.filter(type__name__in=["Block", "Geographic region", "Country"])
+		return self.member_of.filter(region__type__name__in=["Block", "Geographic region", "Country"])
 
 	def __unicode__(self):
 		return self.shortname
+	
+	def get_population(self):
+		return sum([x.member.population for x in self.regionmembers.all()])
+			
+	def agreements(self):
+		agreements = []
+		for i in self.regionmembers.all():
+			agreements.extend([x.region for x in i.treaties()])
+			agreements.extend([x.region for x in i.unions()])
+		return set(agreements)
+		
+	def __unicode__(self):
+		return self.name			
+
+
+class RegionLocalName(models.Model):
+	language	= models.ForeignKey(Language)
+	region		= models.ForeignKey(Region)
+	name		= models.CharField(max_length=200, blank=True)
+
 
 
 class RegionMembership(models.Model):
-	region		= models.ForeignKey(Region)
-	member		= models.ForeignKey(Region, related_name="member")
+	region		= models.ForeignKey(Region, related_name="members")
+	member		= models.ForeignKey(Region, related_name="member_of")
 	type		= models.CharField(max_length=100, blank=True, null=True)
 
+	def __unicode__(self):
+		return "%s member of %s (%s)" % (self.member, self.region, self.type)
 
-class Topic(Entry):
+
+class Topic(Entity):
 	name			= models.CharField(max_length=100)
 	
 	class Meta:
@@ -110,8 +100,8 @@ class Topic(Entry):
 	def __unicode__(self):
 		return self.name
 
-class EntityTopic(Entry):
-	region			= models.ForeignKey(RegionalEntity)
+class Section(Entity):
+	region			= models.ForeignKey(Region)
 	topic			= models.ForeignKey(Topic)
 	text			= models.TextField()
 	
@@ -128,7 +118,7 @@ class EntityTopic(Entry):
 
 
 	def severity(self):
-		votes = self.entitytopicvote_set.all()
+		votes = self.sectionvote_set.all()
 		count = votes.count()
 		if count == 0:
 			return 1
@@ -136,15 +126,15 @@ class EntityTopic(Entry):
 
 
 	def votes(self):
-		return self.entitytopicvote_set.all().count()
+		return self.sectionvote_set.all().count()
 		
 	
 	class Meta:
 		unique_together	=	(("region", "topic"),)
 
 
-class EntityTopicVote(models.Model):
-	section			= models.ForeignKey(EntityTopic)
+class SectionVote(models.Model):
+	section			= models.ForeignKey(Section)
 	user			= models.ForeignKey(User)
 	value			= models.IntegerField(default=1)
 
@@ -159,18 +149,19 @@ class Tag(models.Model):
 
 class EntityTag(models.Model):
 	tag			= models.ForeignKey(Tag)
-	entity			= models.ForeignKey(Entry)
+	entity			= models.ForeignKey(Entity)
 	value			= models.CharField(max_length=100, null=True, blank=True)
 
 
-class CourtCase(Entry):
-	country			= models.ForeignKey(RegionalEntity)
+class CourtCase(Entity):
+	region			= models.ForeignKey(Region)
+	# Not done
 	
 	
 class NewsItem(models.Model):
 	headline		= models.CharField(max_length=200)
 	text			= models.TextField()
-	itemref			= models.ForeignKey(Entry, blank=True, null=True)
+	itemref			= models.ForeignKey(Entity, blank=True, null=True)
 	author			= models.ForeignKey(User)
 	timestamp_submitted	= models.DateTimeField(auto_now_add=True)
 	timestamp_edited	= models.DateTimeField(auto_now=True)
@@ -180,7 +171,7 @@ class Link(models.Model):
 	title			= models.CharField(max_length=200)
 	url			= models.URLField()
 	description		= models.TextField()
-	itemref			= models.ForeignKey(Entry, blank=True, null=True)
+	itemref			= models.ForeignKey(Entity, blank=True, null=True)
 	author			= models.ForeignKey(User)
 	timestamp_submitted	= models.DateTimeField(auto_now_add=True)
 	timestamp_edited	= models.DateTimeField(auto_now=True)

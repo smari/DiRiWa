@@ -28,7 +28,7 @@ except:
 	print reader
 
 # Format:
-#	[Country]
+#	[Country, Relationship Type]
 #
 
 georegion, created = RegionType.objects.get_or_create(name="Geographic region", in_menu=True)
@@ -48,17 +48,22 @@ else:
 
 for line in reader:
 	try:
-		c = Country.objects.get(shortname=line[0])
+		c = Region.objects.get(shortname=line[0])
 	except Exception, e:
 		try:
-			c = Country.objects.get(name=line[0])
+			c = Region.objects.get(name=line[0])
 		except Exception, e:
 			try:
-				c = Country.objects.get(shortname__icontains=line[0])
+				c = Region.objects.get(shortname__icontains=line[0])
 			except Exception, e:
 				print e
 				print "Couldn't find country name '%s' - check the spelling!" % line[0]
 				continue
 
-	c.regions.add(region)
+	if len(line) > 1:
+		relationshiptype = line[1]
+	else:
+		relationshiptype = None
+
+	RegionMembership.objects.get_or_create(region=region, member=c, type=relationshiptype)
 	print "Added %s to region %s" % (c.shortname, region.name)

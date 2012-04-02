@@ -6,7 +6,11 @@
 {% endblock %}
 {% block content %}
 
-<h1>{{region}}</h1>
+{% if region.shortname %}
+<h1>{{region.shortname}} <small>({{region.name}})</small></h1>
+{% else %}
+<h1>{{region.name}}</h1>
+{% endif %}
 	
 <div class="content">
 	<div class="span17">
@@ -15,45 +19,65 @@
 				<h2>Region statistics</h2>
 				<table>
 				<tr> 
-					<td>Countries:</td><td>{{region.country_regions.count}}</td>
+					<td>Countries:</td><td>{{region.regionmembers.count}}</td>
 				</tr>
 				<tr> 
 					<td>Population:</td><td>{{region.population}}</td>
 				</tr>
 				</table>
 			</div>
+			{% if region.agreements %}
 			<div class="span5">
 				<h2>International agreements in the region</h2>
 				<ul>
 				{% for i in region.agreements %}
-					<li><a href="/regions/region/{{i.id}}">{{i}}</a></li>
+					<li><a href="/regions/{{i.region.id}}/">{{i}}</a></li>
 				{% endfor %}
 				</ul>
 			</div>
+			{% endif %}
+			{% if region.treaties or region.unions %}
+			<div class="span4">
+				<h2>International agreements</h2>
+				<ul>
+				{% for i in region.treaties %}
+					<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %}({{i.type}}){% endif %}</li>
+				{% endfor %}
+				{% for i in region.unions %}
+					<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %}({{i.type}}){% endif %}</li>
+				{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+			{% if region.geographical %}
+			<div class="span4">
+				<h2>Regional memberships</h2>
+				<ul>
+				{% for i in region.geographical %}
+					<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} ({{i.type}}){% endif %}</li>
+				{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+
 			{% comment %}
 			<div class="span5">
 				<h2>Overall Digital Rights Situation</h2>
 				<p>Lorem ipsum sed dolore sit amet...</p>
 			</div>
 			{% endcomment %}
-		<div class="span6">
-			<h2>Map</h2>
-			<img src="/static/img/region_{{region.id}}.png">
 		</div>
-		</div>
+	{% if region.regionmembers.count %}
 	<div class="span6"> 
 		<h2>Countries</h2>
 		<ul>
-			{% for country in region.country_regions.all %}
-			{% if country.name %}
-			<li><a href="/countries/country/{{country.id}}/">{{country.shortname}}</a> ({{country.name}})</li>
-			{% else %}
-			<li><a href="/countries/country/{{country.id}}/">{{country.shortname}}</a></li>
-			{% endif %}
+			{% for country in region.regionmembers.all %}
+			<li><a href="/regions/{{country.id}}/">{{country.shortname}}</a></li>
 			{% endfor %}
 			</ul>
 		</div>
 	</div>
+	{% endif %}
 
 {% for topic in country.entitytopic_set.all %}
 {% include "diriwa/section_display.html" %}

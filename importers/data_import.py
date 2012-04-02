@@ -28,7 +28,7 @@ bloc, created = RegionType.objects.get_or_create(name="Block")
 country, created = RegionType.objects.get_or_create(name="Country")
 
 for line in reader:
-	c, created = Country.objects.get_or_create(shortname=line[1], name=line[2], type=country)
+	c, created = Region.objects.get_or_create(shortname=line[1], name=line[2], type=country)
 	c.isocode = line[11]
 	c.currency = line[9]
 	c.capital = line[7]
@@ -43,11 +43,12 @@ for line in reader:
 		print "Updated country %s" % c.shortname
 
 	region, created = Region.objects.get_or_create(name=line[3], type=georegion)
-	c.regions.add(region)
+	memrel = RegionMembership.objects.get_or_create(region=region, member=c)
+
 	if created:
 		print "Created new %s: %s" % (region.type.name, region.name)
 
 	if line[6] != '':
-		parent, created = Country.objects.get_or_create(shortname=line[6], type=country)
-		c.regions.add(parent)
+		parent, created = Region.objects.get_or_create(shortname=line[6], type=country)
+		memrel = RegionMembership.objects.get_or_create(region=parent, member=c, type=line[4])
 

@@ -36,11 +36,6 @@ class RegionDetailView(DetailView):
 	context_object_name = "region"
 	model = Region
 
-	
-class CountryDetailView(DetailView):
-	context_object_name = "country"
-	model = Country
-
 
 class TopicDetailView(DetailView):
 	context_object_name = "topic"
@@ -49,14 +44,24 @@ class TopicDetailView(DetailView):
 
 class SectionCreateView(CreateView):
 	context_object_name = "section"
-	template_name = "diriwa/entitytopic_new.html"
+	template_name = "diriwa/section_new.html"
 	form_class = SectionForm
-	success_url = "/regions/region/%(country)d/"
+	success_url = "/regions/%(region)d/"
+
+	def dispatch(self, *args, **kwargs):
+		self.region = get_object_or_404(Region, id=kwargs["region"])
+		return super(SectionCreateView, self).dispatch(*args, **kwargs)
+
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+		self.object.region = self.region
+		self.object.save()
+		return HttpResponseRedirect(self.get_success_url())
 
 
 class SectionDetailView(DetailView):
 	context_object_name = "section"
-	model = EntityTopic
+	model = Section
 
 
 
@@ -73,7 +78,7 @@ def section_vote(request):
 		return {"ok": False, "error": "Invalid section (zero)"}
 
 	try:
-		v, created = EntityTopicVote.objects.get_or_create(user=user, section_id=section)
+		v, created = SectionVote.objects.get_or_create(user=user, section_id=section)
 	except Exception, e:
 		return {"ok": False, "error": "Invalid section (%s)" % e}
 		

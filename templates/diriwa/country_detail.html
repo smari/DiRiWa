@@ -26,10 +26,10 @@
 		<h2>International agreements</h2>
 		<ul>
 		{% for i in country.treaties %}
-			<li><a href="/regions/region/{{i.id}}">{{i}}</a></li>
+			<li><a href="/regions/region/{{i.id}}">{{i}}</a>{% if i.type %}({{i.type}}){% endif %}</li>
 		{% endfor %}
 		{% for i in country.unions %}
-			<li><a href="/regions/region/{{i.id}}">{{i}}</a></li>
+			<li><a href="/regions/region/{{i.id}}">{{i}}</a>{% if i.type %}({{i.type}}){% endif %}</li>
 		{% endfor %}
 		</ul>
 	</div>
