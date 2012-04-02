@@ -57,19 +57,16 @@ class HTMLWriter(object):
         return ' '.join(args)
 
 
-    def writeArticleLink(self, n):
+    def writeArticleLink(self, obj):
         # TODO: Fix me!
-        print "--> writeArticleLink"
-        # print "TARGET:" + n.target
+        if obj.target is None:
+            return
 
-        #for i in [(Region, Topic, News]
-        #try:	targetobj = i.objects.get(name=n.target)
-        #except:	pass
-
-        #self.out.write("<a>")
-        self.out.write(n.target)
-        #self.out.write("</a>")
-        print "<-- writeArticleLink"
+        if obj.children:
+            for x in obj.children:
+                self.write(x)
+        else:
+            self._write(obj.target)
 
 
     def writeMagic(self, m):
@@ -237,93 +234,6 @@ class HTMLWriter(object):
                     self.write(x)
             else:
                 self._write(obj.target)
-
-    def writeTimeline(self, obj):
-        img = timeline.drawTimeline(obj.caption)
-        if img is None:
-            return
-        
-        # target = "/timeline/"+os.path.basename(img)
-        # width, height = Image.open(img).size
-        
-        # self.out.write('<img src="%s" width="%s" height="%s" />' % (target, width, height))
-        
-    def writeImageLink(self, obj):
-        """
-        <span class='image'>
-          <span class='left'>
-            <img src='bla' />
-            <span class='imagecaption'>bla bla</span>
-          <span/>
-        <span/>
-        """
-        
-        if self.images is None:
-            return
-
-        width = obj.width
-        height = obj.height
-
-        #if not width:
-        #    width = 400  # what could be a sensible default if no width is given? maybe better 0?
-
-        if width:
-            path = self.images.getPath(obj.target, size=max(width, height))
-        else:
-            path = self.images.getPath(obj.target)
-
-        if path is None:
-            return
-
-        if isinstance(path, str):
-            path = unicode(path, 'utf8')
-        targetsrc = '/images/%s' % path
-        
-        
-        if self.imglevel==0:
-            self.imglevel += 1
-
-            return
-            try:
-                def getimg():
-                    pass
-                    # return Image.open(os.path.join(os.path.expanduser("~/images"), path))
-                img = None
-                if not width:
-                    if not img:
-                        img = getimg()
-                    size = img.size
-                    width = min(400, size[0])
-
-                if not height:
-                    if not img:
-                        img = getimg()
-                    size = img.size
-                    height = size[1]*width/size[0]
-            except IOError, err:
-                self.imglevel -= 1
-                log.warn("Image.open failed:", err, "path=", repr(path))
-                return
-
-            if obj.isInline():
-                self.out.write('<img src="%s" width="%s" height="%s" />' % (targetsrc, width, height))
-            else:
-                align = obj.align
-                if obj.thumb == True and not obj.align:
-                    obj.align= "clear right"
-                self.out.write('''<div  class="bbotstyle image %s" style="width:%spx">'''% (obj.align, width))
-                self.out.write('<img src="%s" width="%s" height="%s" />' % (targetsrc, width, height))
-                
-                self.out.write('<span class="imagecaption">')
-                for x in obj.children:
-                    self.write(x)
-                self.out.write('</span></div>')
-            self.imglevel -= 1
-        else:
-            self.out.write('<a href="%s">' % targetsrc)
-            for x in obj.children:
-                self.write(x)
-            self.out.write('</a>')
 
     def writeText(self, t):
         #self.out.write(cgi.escape(t.caption).encode('ascii', 'xmlcharrefreplace'))
