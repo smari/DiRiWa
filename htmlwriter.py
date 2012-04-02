@@ -131,11 +131,12 @@ class HTMLWriter(object):
                 self.write(t.imagemap.imagelink)
             return
 
-        
-        self.out.write(t.starttext)
+        try:    self.out.write(t.starttext)
+        except: pass
         for x in t:
             self.write(x)
-        self.out.write(t.endtext)
+        try:    self.out.write(t.endtext)
+        except: pass
             
     def writeRow(self, row):
         self.out.write('<tr>')
