@@ -15,15 +15,18 @@
 <div class="content">
 	<div class="span17">
 		<div class="span10">
-			<div class="span4">
+			<div class="span5">
 				<h2>Region statistics</h2>
 				<table>
-				<tr> 
-					<td>Countries:</td><td>{{region.regionmembers.count}}</td>
-				</tr>
-				<tr> 
-					<td>Population:</td><td>{{region.population}}</td>
-				</tr>
+				{% if region.regionmembers.count %}<tr> <td>Countries:</td><td>{{region.regionmembers.count}}</td> 	</tr> {% endif %}
+				<tr> <td>Population:</td><td>{{region.population}}</td>			</tr>
+				<tr> <td>Region type:</td><td>{{region.type}}</td>			</tr>
+				{% if region.url %}<tr> <td>Website:</td><td><a href="{{region.url}}">{{region.url}}</a></td></tr>{% endif %}
+				{% if region.itu_t %}<tr> <td>Dialing prefix:</td><td>{{region.itu_t}}</td></tr>{% endif %}
+				{% if region.deptype %}<tr> <td>Political status:</td><td>{{region.deptype}}{% if region.depsubtype %}, {{region.depsubtype}}{%endif%}</td></tr>{% endif %}
+				{% if region.capital %}<tr> <td>Capital:</td><td><a href="http://en.wikipedia.org/wiki/{{region.capital}}">{{region.capital}}</a></td></tr>{% endif %}
+				{% if region.currency %}<tr> <td>Currency:</td><td>{{region.currency}}</td></tr>{% endif %}
+				{% if region.languages.count %}<tr> <td>Languages:</td><td>{% for lang in region.languages %}{{lang}}, {%endfor%}</td></tr>{% endif %}
 				</table>
 			</div>
 			{% if region.agreements %}
@@ -79,7 +82,7 @@
 	</div>
 	{% endif %}
 
-{% for topic in country.section_set.all %}
+{% for section in region.section_set.all %}
 {% include "diriwa/section_display.html" %}
 {% endfor %}
 
