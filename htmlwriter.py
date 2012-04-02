@@ -286,6 +286,7 @@ class HTMLWriter(object):
             return
             try:
                 def getimg():
+                    pass
                     # return Image.open(os.path.join(os.path.expanduser("~/images"), path))
                 img = None
                 if not width:
