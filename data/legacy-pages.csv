@@ -23,28 +23,6 @@ algeria,Agencies and Groups,"
 
 
 "
-censorship,General Overview,"[http://opennet.net/about-filtering Filtering types] by the OpenNet Initiative
-
-"
-censorship,Geographical,"
-* [http://opennet.net/research/profiles Country profiles] curtesy of Opennet Initiative
-* [http://map.opennet.net/filtering-pol.html interactive map] by the OpenNet Initiative
-* Regional Overviews
-** [http://opennet.net/research/regions/asia Asia]
-** [http://opennet.net/research/australia-and-new-zealand Australia/New Zealand]
-** the [http://opennet.net/research/regions/cis Commonwealth of Independent States]
-** [http://opennet.net/research/regions/europe Europe]
-** [http://opennet.net/research/regions/la Latin America]
-** the [http://opennet.net/research/regions/mena Middle East and North Africa]
-** [http://opennet.net/research/regions/ssafrica sub-Saharan Africa]
-** and the [http://opennet.net/research/regions/namerica United States/Canada]
-
-"
-censorship,Crowdsourced reports on Web Censorship,"
-* [http://www.herdict.org/web/ The verdict of the Herd]
-* Freedom House 2011 [http://www.freedomhouse.org/template.cfm?page=664 A Global Assessment of Internet and Digital Media Freedom]
-
-"
 czech republic,Access to Communications,"
 Access to communication technologies is similar to other EU countries. GSM communication both at voice and data level, internet communication provided most by large telcom corporation such as O2 or UPC; smaller ISP such as netbox.cz exists too. Traffic limitation is frequent only at GSM level, leaving home-internet without strict limitations.
 
@@ -128,9 +106,6 @@ People have a right to a 1Mbps broadband connection.
 "
 finland,Censorship,"
 There is voluntary censorship of suspected child pornography pages. Some of these sites do not include child pornography. [http://lapsiporno.info/english-2008-02-15.html (source)]
-
-"
-finland,Surveillance,"
 
 "
 finland,Intellectual Property,"
@@ -223,8 +198,6 @@ france,Right to data,"
 
 === Open Standards ===
 
-"
-germany,Access to Communications,"
 "
 germany,Censorship,"* very high Videogame Censorship
 * Low(?) Internet censorship, censored Searches in Searchengines.
@@ -339,8 +312,6 @@ Members are
 * Open Standards Alliance
 
 "
-hungary,Political stances,"
-"
 iceland,Access to Communications,"Internet access in Iceland is generally available to all. There are no [[Three Strikes]] laws or any other legal mandates that could restrict a persons access to Internet. Iceland's minister of education and culture stated in Parliament on 17. february 2010 that due to the high level of government services provided through Internet in Iceland and the use of the heavy use of Internet in commerce and other activities, ""it could be argued that access to the Internet has become part of the publics civil liberties. In that light I consider that caution should be exercised in adopting measures which limit access to the Internet for alleged copyright infringements."" ([http://www.althingi.is/altext/raeda/138/rad20100217T145731.html Katrín Jakobsdóttir's speech, in Icelandic])
 
 "
@@ -357,13 +328,6 @@ iceland,Intellectual Property,"
 Iceland adopted [[IPRED]] in their copyright law in 2010.
 
 === Patents ===
-
-"
-ireland,Access to Communication,"
-"
-ireland,Censorship,"
-"
-ireland,Surveillance,"
 
 "
 ireland,Intellectual Property,"
@@ -453,7 +417,7 @@ Due to very good broadband access and high costs for throttling devices, throttl
 The coverage of alternatives to DSL is very good in larger cities and it is possible to get unthrottled and only speed-limited Internet connection.
 
 "
-slovakia,Censorship a Network Neutrality,"
+slovakia,Network Neutrality,"
 All mobile operators are filtering internet traffic using IWF blacklist, [http://globalvoicesonline.org/2009/11/24/slovakia-mobile-internet-providers-put-an-end-to-internet-neutrality/ the situation regarding network neutrality is critical in Slovakia]
 
 === Slovak O2 ===
@@ -526,8 +490,6 @@ slovakia,Agencies and Groups,"
 
 [http://www.skosi.org Slovak Open Source Initiative] and [http://www.sklug.sk/ Slovak Linux User Group] are now more or less defunct organizations, most people joining SOIT instead.
 
-"
-spain,Access to Communications,"
 "
 spain,Censorship,"* ''TODO:'' Attempt to shut down websites with movie links even if it was legal before Ley Sinde was approved.
 * ''TODO:'' Batasuna website blocked

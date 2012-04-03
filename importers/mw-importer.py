@@ -16,7 +16,7 @@ for entity in sys.argv:
     for line in inp.readlines():
         m=sectionre.match(line)
         if m:
-            if section: results.append(section)
+            if section and ''.join(section[2]).strip(): results.append(section)
             section=(entity,m.group(1),[])
             #print >>sys.stderr, "new section", section
         elif section:
