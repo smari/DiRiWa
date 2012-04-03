@@ -8,9 +8,76 @@ class Language(models.Model):
 	def __unicode__(self):
 		return self.name
 
+
+class Triple(models.Model):
+        entity          = models.ForeignKey("Entity")
+        key             = models.CharField(max_length=200)
+        value           = models.CharField(max_length=200)
+
+        # <entity, "memopol", "http://...">
+        
+        def __unicode__(self):
+                return u"(%d, '%s', '%s')" % (self.entity.id, self.key, self.value)
+        
+        class Meta:
+                ordering  = ["entity", "key"]
+
 class Entity(models.Model):
-	pass
-		
+        pass
+
+	def triple_get(self, key, default=None):
+                try:
+                        return self.triple_set.get(key=key).value
+                except DoesNotExist:
+                        return default
+
+        def triple_setval(self, key, value):
+                t, created = self.triple_set.get_or_create(key=key)
+                t.value = value
+                t.save()
+                return t
+
+        set_triple = triple_setval
+        get_triple = triple_get
+
+        def triple_delete(self, key):
+                try:
+                        t = self.triple_set.get(key=key)
+                        t.delete()
+                except DoesNotExist:
+                        # If it doesn't exist, we succeded, eh?
+                        return True
+
+        def triple_list(self):
+                return [x.key for x in self.triple_set.all()]
+
+        def triple_dict(self):
+                d = {}
+                for item in self.triple_set.all():
+                        d[item.key] = item.value
+
+                return d
+
+        def triple_triples(self):
+                l = []
+                for item in self.triple_set.all():
+                        l.append((item.entity, item.key, item.value))
+
+        def triple_rdf(self):
+                # TODO: Fix this to show actual RDF output.
+                t = "<triples>\n"
+                for item in self.triple_set.all():
+                        t += "  <triple>\n"
+                        t += "    <entity id=\"%d\"/>\n" % item.entity.id
+                        t += "    <key>%s</key>\n" % item.key
+                        t += "    <value>%s</key>\n" % item.value
+                        t += "  </triple>\n"
+                t += "</triples>\n"
+                return t
+
+        def triple_json(self):
+                return {"entity": self.id, "dict": self.triple_dict()}
+        
 
 class RegionType(models.Model):
 	name		= models.CharField(max_length=50)
@@ -36,6 +103,7 @@ class Region(Entity):
 	currency		= models.CharField(max_length=100, blank=True, null=True)
 	languages		= models.ManyToManyField(Language, blank=True)
 	regionmembers		= models.ManyToManyField("Region", blank=True, through="RegionMembership")
+        description             = models.TextField(default='')
 
 	class Meta:
 		ordering	= ["name", "shortname", "type"]
@@ -56,11 +124,10 @@ class Region(Entity):
 
 	def geographical(self):
 		return self.member_of.filter(region__type__name__in=["Block", "Geographic region", "Country"])
-
-	def __unicode__(self):
-		return self.shortname
 	
 	def get_population(self):
+                if self.population > 0:
+                        return population
 		return sum([x.member.population for x in self.regionmembers.all()])
 			
 	def agreements(self):
@@ -99,11 +166,31 @@ class Topic(Entity):
 	def __unicode__(self):
 		return self.name
 
+
+class SectionHistory(models.Model):
+        entity                  = models.ForeignKey(Entity)
+        oldtext                 = models.TextField()
+        timestamp               = models.DateTimeField(auto_now=True)
+        user                    = models.ForeignKey(User)
+
+        class Meta:
+                ordering = ["-timestamp"]
+
+
 class Section(Entity):
 	region			= models.ForeignKey(Region)
 	topic			= models.ForeignKey(Topic)
+        user                    = models.ForeignKey(User)
 	text			= models.TextField()
-	
+        
+        
+        def save(self, *args, **kwargs):
+                s = SectionHistory(entity=self, text=self.text, user=self.user)
+                s.save()
+                super(Section, self).save(*args, **kwargs)
+
+        def history(self):
+                return SectionHistory.objects.filter(entity=self)
 
 	def wikitext(self):
 		from mwlib.uparser import simpleparse
@@ -115,7 +202,7 @@ class Section(Entity):
 		w.write(simpleparse(self.text))
 		return out.getvalue()
 
-
+        
 	def severity(self):
 		votes = self.sectionvote_set.all()
 		count = votes.count()

@@ -9,5 +9,11 @@ class RegionForm(ModelForm):
 class SectionForm(ModelForm):
 	class Meta:
 		model = Section
-		exclude = ('region', )
+		exclude = ('region', 'user')
+
+
+class NewsItemForm(ModelForm):
+	class Meta:
+		model = NewsItem
+		exclude = ('itemref', 'author')
 

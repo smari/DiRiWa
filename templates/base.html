@@ -45,10 +45,14 @@
 						<li><a href="#">Other</a></li>
 					</ul>
 				</li> 
+			</ul>
+			<ul class="nav pull-right">
+				{% if user.is_authenticated %}
+				<li><p>Logged in as <a href="/accounts/profile/">{{user.username}}</a> (<a href="/accounts/logout/">Log out</a>)</p></li>
+				{% else %}
+				<li><a href="/accounts/login/">Log in or sign up to contribute</a></li>
+				{% endif %}
 			</ul> 
-			{% if user.is_authenticated %}
-			<p class="pull-right">Logged in as <a href="/accounts/profile/">{{user.username}}</a> (<a href="/accounts/logout/">Log out</a>)</p> 
-			{% endif %}
 		</div> 
 	</div> 
 </div> 
@@ -60,7 +64,6 @@
 				{% block actions %}
 				{% endblock %}
 			{% else %}
-				<a href="/accounts/login/" class="btn primary">Log in or sign up to contribute</a>
 			{% endif %}
 			</div>
 			{% block content %}	

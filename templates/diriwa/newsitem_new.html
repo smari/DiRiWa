@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap %}
+{% block content %}
+
+<h1>New News</h1>
+<div class="span12">
+<form action="/news/add/" method="POST">
+<input type="hidden" name="entity" value="{{newsitem.entityid}}"/>
+{%csrf_token%}
+<fieldset> 
+{{form|bootstrap}}
+<div class="clearfix">
+	<label></label>
+	<div class="input">
+		<input class="btn primary" type="submit" value="Save"/>
+	</div>
+</div>
+</fieldset>
+</form>
+</div>
+
+{% endblock %}

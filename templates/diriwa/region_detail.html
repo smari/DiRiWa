@@ -30,18 +30,19 @@
 			</table>
 		</div>
 
-		{% if region.section_set.count %}
 		<div class="span6">
 			<h2>Table of Contents</h2>
 			<div class="well">
 			<ul>
 			{% for section in region.section_set.all %}		
 				<li><a href="#section-{{section.topic.name|slugify}}-{{section.id}}">{{section.topic.name}}</a></li>
+			{% empty %}
+				<li><a href="/regions/{{region.id}}/sections/add/">This {{region.type.name|lower}} has no information registered about it. Please help DiRiWa grow by adding some information!</a></li>
 			{% endfor %}
 			</ul>
 			</div>
 		</div>
-		{% endif %}
+
 	</div>
 
 	{% if region.section_set.count %}
@@ -62,44 +63,45 @@
 		{% if region.agreements %}
 		<div class="span4">
 			<h2>International agreements in the region</h2>
-			<ul>
-			{% for i in region.agreements %}
-				<li><a href="/regions/{{i.region.id}}/">{{i}}</a></li>
-			{% endfor %}
-			</ul>
+			<div class="biglist">
+			        <input type="search" onkeyup="biglist_filter(this);"/>
+			        <ul>
+				{% for i in region.agreements %}
+				        <li><a href="/regions/{{i.region.id}}/">{{i}}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
 		</div>
 		{% endif %}
 	
 		{% if region.treaties %}
 		<div class="span4">
 			<h2>International agreements</h2>
-			<ul>
-			{% for i in region.treaties %}
-				<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} <small>({{i.type}})</small>{% endif %}</li>
-			{% endfor %}
-			</ul>
+			<div class="biglist">
+			       <input type="search" onkeyup="biglist_filter(this);"/>
+			       <ul>
+				 {% for i in region.treaties %}
+				     <li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} <small>({{i.type}})</small>{% endif %}</li>
+				 {% endfor %}
+			       </ul>
+			</div>
 		</div>
 		{% endif %}
 
-		{% if region.unions %}
+		{% if region.unions or region.geographical %}
 		<div class="span4">
-			<h2>Unions</h2>
-			<ul>
+			<h2>Unions and regional relations</h2>
+			<div class="biglist">
+			  <input type="search" onkeyup="biglist_filter(this);"/>
+			  <ul>
 			{% for i in region.unions %}
 				<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} <small>({{i.type}})</small>{% endif %}</li>
 			{% endfor %}
-			</ul>
-		</div>
-		{% endif %}
-
-		{% if region.geographical %}
-		<div class="span4">
-			<h2>Regional memberships</h2>
-			<ul>
 			{% for i in region.geographical %}
 				<li><a href="/regions/{{i.region.id}}/">{{i.region}}</a>{% if i.type %} <small>({{i.type}})</small>{% endif %}</li>
 			{% endfor %}
-			</ul>
+			  </ul>
+			</div>
 		</div>
 		{% endif %}
 
@@ -112,13 +114,16 @@
 				{% if region.type.name == "Block" %}Countries{% endif %}
 				{% if region.type.name == "Treaty" %}Signatories{% endif %}
 			</h2>
-			<ul>
+			<div class="biglist">
+			  <input type="search" onkeyup="biglist_filter(this);"/>
+			  <ul>
 				{% for country in region.regionmembers.all %}
 				<li><a href="/regions/{{country.id}}/">{{country.shortname}}</a></li>
 				{% endfor %}
-				</ul>
+			  </ul>
 			</div>
 		</div>
+
 		{% endif %}
 	</div>
 

@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 	(r"^about/$",					TemplateView.as_view(template_name="about.html")),
 
 	(r"^news/$",					ListView.as_view(model=NewsItem, context_object_name="newsitems")),
+	(r"^news/add/$",				login_required(NewsItemCreateView.as_view())),
 	(r"^news/(?P<pk>\d+)/$",			DetailView.as_view(model=NewsItem, context_object_name="newsitems")),
 
 	(r"^tags/$",					ListView.as_view(model=Tag, context_object_name="tags")),
@@ -20,9 +21,11 @@ urlpatterns = patterns('',
 	(r"^regions/edit/(?P<pk>\d+)/$",		login_required(UpdateView.as_view(model=Region, success_url="/regions/%(id)d/", template_name_suffix="_edit"))),
 	(r"^regions/(?P<pk>\d+)/$",			RegionDetailView.as_view()),
 	(r"^regions/(?P<region>\d+)/sections/add/$",	login_required(SectionCreateView.as_view())),
-	(r"^regions/(?P<region>\d+)/news/add/",		login_required(SectionCreateView.as_view())),
-	(r"^regions/(?P<region>\d+)/links/add/",	login_required(SectionCreateView.as_view())),
-	(r"^regions/(?P<region>\d+)/memberships/edit/",	login_required(SectionCreateView.as_view())),
+	(r"^regions/(?P<entity>\d+)/news/add/",		login_required(NewsItemCreateView.as_view())),
+
+	(r"^entities/(?P<entity>\d+)/news/add/",	login_required(NewsItemCreateView.as_view())),
+	#(r"^regions/(?P<region>\d+)/links/add/",	login_required(LinkCreateView.as_view())),
+	#(r"^regions/(?P<region>\d+)/memberships/edit/",	login_required(MembershipUpdateView.as_view())),
 
 	(r"^topics/$",					ListView.as_view(model=Topic, context_object_name="topics")),
 	(r"^topics/add/$",				login_required(CreateView.as_view(model=Topic, success_url="/topics/%(id)d/", template_name_suffix="_new"))),

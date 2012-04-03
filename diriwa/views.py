@@ -64,6 +64,34 @@ class SectionDetailView(DetailView):
 	model = Section
 
 
+class NewsItemCreateView(CreateView):
+	context_object_name = "newsitem"
+	template_name = "diriwa/newsitem_new.html"
+	form_class = NewsItemForm
+	success_url = "/news/%(id)d/"
+
+	def dispatch(self, *args, **kwargs):
+		self.entityid = int(kwargs.get("entity", 0))
+		res = super(NewsItemCreateView, self).dispatch(*args, **kwargs)
+
+		return res
+
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+
+		if self.entityid == None:
+			self.entityid = int(self.request.REQUEST.get("entity", 0))
+
+		print "Entity id: %d" % self.entityid
+
+		self.object.itemref = get_object_or_404(Entity, id=self.entityid)
+		self.object.author = self.request.user
+		self.save()
+
+		return HttpResponseRedirect(self.get_success_url())
+
+
+
 
 @login_required
 @jsonize
