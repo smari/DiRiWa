@@ -3,3 +3,4 @@ django-bootstrap-form
 django-registration
 mwlib
 simplejson
+feedparser

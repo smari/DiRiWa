@@ -108,3 +108,5 @@ INSTALLED_APPS = (
 
 ACCOUNT_ACTIVATION_DAYS = 30
 
+OMNOM_FEED='http://links.ctrlc.hu/?format=atom'
+
