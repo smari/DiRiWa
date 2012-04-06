@@ -35,8 +35,10 @@ for item in reversed(f['entries']):
          newsitem.text=''.join([x.value for x in item.content])
          newsitem.save()
          # add tags from bookmark
-         tag=Tag.objects.get_or_create(name=tag['term'])[0]
-         EntityTag.objects.get_or_create(entity=newsitem, tag=tag)
+         for tag in item.get('tags',[]):
+            if tag in cs or tag in ts: continue
+            t=Tag.objects.get_or_create(name=tag['term'])[0]
+            EntityTag.objects.get_or_create(entity=newsitem, tag=t)
          # link topics to newsitem
          for t in ts:
             top=Topic.objects.get(name__iexact=t)
