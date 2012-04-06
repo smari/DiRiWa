@@ -12,7 +12,7 @@
 	{% endif %}
 		<div class="span6"> 
 			<h2>{{i.headline}}</h2> 
-			<p>{{i.text|safe}}</p>
+			<p>{{i.text|safe|truncatewords_html:50}}</p>
 			<p><a class="btn" href="/news/{{i.id}}/">View details &raquo;</a></p> 
 		</div> 
 	{% if forloop.counter|divisibleby:"3" or forloop.last %}

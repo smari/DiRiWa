@@ -2,10 +2,10 @@
 {% load bootstrap %}
 {% block content %}
 
-<h1>New Section</h1>
+<h1>New Section{% if region %} about {{region.get_name}}{% endif %}</h1>
 <div class="span12">
 <form action="/sections/add/" method="POST">
-<input type="hidden" name="region" id="{{section.region.id}}"/>
+<input type="hidden" name="region" id="{{region.id}}"/>
 {%csrf_token%}
 <fieldset> 
 {{form|bootstrap}}

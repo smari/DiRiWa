@@ -112,6 +112,11 @@ class Region(Entity):
 		if self.shortname == "":
 			self.shortname = self.name
 		super(self, save)()
+
+        def get_name(self):
+                if self.shortname != "":
+                        return self.shortname
+                return self.name
 	
 	def longname(self):
 		return not (self.name == self.shortname)

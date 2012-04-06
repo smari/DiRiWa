@@ -52,6 +52,11 @@ class SectionCreateView(CreateView):
 		self.region = get_object_or_404(Region, id=kwargs["region"])
 		return super(SectionCreateView, self).dispatch(*args, **kwargs)
 
+        def get_context_data(self, *args, **kwargs):
+                context_data = super(SectionCreateView, self).get_context_data(*args, **kwargs)
+                context_data.update({'region': self.region})
+                return context_data
+
 	def form_valid(self, form):
 		self.object = form.save(commit=False)
 		self.object.region = self.region
