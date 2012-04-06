@@ -50,6 +50,7 @@ footer {
 .topic {
 	margin-top:		10px;
 	border-top:		1px solid #ddd;
+   width: 100%;
 }
 
 .longname {
