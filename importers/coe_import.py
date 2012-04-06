@@ -9,6 +9,7 @@ sys.path.append("..")
 os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
 import csv 
 from diriwa.models import *
+from django.db import transaction
 import settings
 settings.DEBUG = False
 
@@ -23,23 +24,24 @@ headers = reader.next()
 
 treatytype, created = RegionType.objects.get_or_create(name="Treaty")
 
-for line in reader:
-	treaty, created = Region.objects.get_or_create(name=line[2], type=treatytype)
+with transaction.commit_on_success():
+   for line in reader:
+      treaty, created = Region.objects.get_or_create(name=line[2], type=treatytype)
 
-	if created:
-		print "Created treaty %s" % treaty.name
+      if created:
+         print "Created treaty %s" % treaty.name
 
-	try:	signatory = Region.objects.get(name=line[0])
-	except:
-		try:	signatory = Region.objects.get(shortname=line[0])
-		except:
-			print "Failed to recognize signatory '%s'" % line[0]
-			continue
+      try:	signatory = Region.objects.get(name=line[0])
+      except:
+         try:	signatory = Region.objects.get(shortname=line[0])
+         except:
+            print "Failed to recognize signatory '%s'" % line[0]
+            continue
 
-	# print signatory
-	if line[1]:
-		memrel, created = RegionMembership.objects.get_or_create(region=treaty, member=signatory)
-		memrel.type = "Ratified"
-		memrel.save()
-		if created:
-			print "Added %s to treaty %s" % (signatory, treaty.name)
+      # print signatory
+      if line[1]:
+         memrel, created = RegionMembership.objects.get_or_create(region=treaty, member=signatory)
+         memrel.type = "Ratified"
+         memrel.save()
+         if created:
+            print "Added %s to treaty %s" % (signatory, treaty.name)
