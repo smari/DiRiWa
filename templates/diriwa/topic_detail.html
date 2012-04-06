@@ -24,4 +24,16 @@
 </div>
 {% endfor %}
 
+{% if topic.relitem.count %}
+<div class="row">
+  <h2>News</h2>
+  {% for item in topic.relitem.all|slice:":6" %}
+  {% include "diriwa/newsitem_display.html" %}
+  {% endfor %}
+  {% if topic.relitem.count > 6 %}
+  <a class="btn btn-large" href="/topic/{{topic.id}}/news/">More news! &raquo;</a>
+  {% endif %}
+</div>
+{% endif %}
+
 {% endblock %}

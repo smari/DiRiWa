@@ -6,26 +6,25 @@
 
   <h2>{{newsitem.headline}}</h2> 
   <div>
-    Refers to: 
     {% for entity in newsitem.itemref.all %}
     {% if entity.region %}
-    <a href="/regions/{{entity.id}}/">{{entity.region.get_name}}</a>
+    <a class="label" href="/regions/{{entity.id}}/">{{entity.region.get_name}}</a>
     {% endif %}
     {% if entity.topic %}
-    <a href="/topics/{{entity.id}}/">{{entity.topic.name}}</a>
+    <a class="label" href="/topics/{{entity.id}}/">{{entity.topic.name}}</a>
     {% endif %}
     {% endfor %}
     {% for tag in newsitem.entitytag_set.all %}
-    <a href="/tags/{{tag.id}}/">{{tag.tag.name}}</a>
+    <a class="label" href="/tags/{{tag.id}}/">{{tag.tag.name}}</a>
     {% endfor %}
-  </div>
-  <div>
-    {% if newsitem.url %}
-    <a href="{{newsitem.url}}">Original story</a>
-    {% endif %}
   </div>
   <p>{{newsitem.text|safe}}</p>
 
+  <div>
+    {% if newsitem.url %}
+    <a class="btn btn-primary" href="{{newsitem.url}}">Original story</a>
+    {% endif %}
+  </div>
 </div>
 
 {% endblock %}
