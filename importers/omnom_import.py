@@ -33,7 +33,7 @@ for item in reversed(f['entries']):
       newsitem, created = NewsItem.objects.get_or_create(headline=item.get('title'),
                                                          url=item['links'][0]['href'])
       if created:
-      newsitem.text=''.join([x.value for x in item.content])
+         newsitem.text=''.join([x.value for x in item.content])
          newsitem.save()
          # add tags from bookmark
          tag=Tag.objects.get_or_create(name=tag['term'])[0]

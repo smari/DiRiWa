@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 
 	(r"^news/$",					ListView.as_view(model=NewsItem, context_object_name="newsitems")),
 	(r"^news/add/$",				login_required(NewsItemCreateView.as_view())),
-	(r"^news/(?P<pk>\d+)/$",			DetailView.as_view(model=NewsItem, context_object_name="newsitems")),
+	(r"^news/(?P<pk>\d+)/$",			DetailView.as_view(model=NewsItem, context_object_name="newsitem")),
 
 	(r"^tags/$",					ListView.as_view(model=Tag, context_object_name="tags")),
 
