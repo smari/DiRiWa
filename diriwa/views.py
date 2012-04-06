@@ -110,6 +110,17 @@ class NewsListView(ListView):
                 return context_data
 
 
+def search(request):
+        ctx = {}
+        q = request.REQUEST.get("q", "")
+        ctx["q"] = q
+        ctx["results"] = Region.objects.filter(Q(name__icontains=q) | Q(shortname__icontains=q))
+
+        if len(ctx["results"]) == 1:
+                return HttpResponseRedirect("/regions/%d/" % ctx["results"][0].id)
+        
+        return render_to_response("diriwa/searchresults.html", ctx)
+        
 @login_required
 @jsonize
 def section_vote(request):

@@ -42,6 +42,8 @@ urlpatterns = patterns('',
 	(r"^sections/(?P<pk>\d+)/$",			SectionDetailView.as_view()),
 	(r"^sections/vote/$",				"diriwa.views.section_vote"),		
 
+        (r"^search/$",                                  "diriwa.views.search"),
+                       
 	(r'^accounts/profile/',				TemplateView.as_view(template_name="registration/profile.html")),
 	(r'^accounts/',					include('registration.urls')),
    url(r'^admin/', include(admin.site.urls)),

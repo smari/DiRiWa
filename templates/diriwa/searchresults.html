@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Search results</h1>
+<p>Query: '{{q}}'</p>
+
+{% for r in results %}
+<div>
+  <h4><a href="/regions/{{r.id}}">{{r.get_name}}</a></h4>
+  <p>{{r.type.name}} {% if r.deptype %} / {{r.deptype}} {{r.depsubtype}} {% endif %} / {{r.section_set.count}} sections / {{r.relitem.count}} news items</p>
+  <hr/>
+</div>
+{% endfor %}
+
+{% endblock %}
