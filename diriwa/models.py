@@ -247,6 +247,7 @@ class CourtCase(Entity):
 class NewsItem(models.Model):
 	headline		= models.CharField(max_length=200)
 	text			= models.TextField()
+	url			= models.URLField()
 	itemref			= models.ForeignKey(Entity, blank=True, null=True)
 	author			= models.ForeignKey(User)
 	timestamp_submitted	= models.DateTimeField(auto_now_add=True)
@@ -258,7 +259,7 @@ class Link(models.Model):
 	url			= models.URLField()
 	description		= models.TextField()
 	itemref			= models.ForeignKey(Entity, blank=True, null=True)
-	author			= models.ForeignKey(User)
+	author			= models.ForeignKey(User, blank=True, null=True)
 	timestamp_submitted	= models.DateTimeField(auto_now_add=True)
 	timestamp_edited	= models.DateTimeField(auto_now=True)
 	
