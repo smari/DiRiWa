@@ -171,7 +171,7 @@ class SectionHistory(models.Model):
         entity                  = models.ForeignKey(Entity)
         oldtext                 = models.TextField()
         timestamp               = models.DateTimeField(auto_now=True)
-        user                    = models.ForeignKey(User)
+        user                    = models.ForeignKey(User, blank=True, null=True)
 
         class Meta:
                 ordering = ["-timestamp"]
@@ -180,14 +180,14 @@ class SectionHistory(models.Model):
 class Section(Entity):
 	region			= models.ForeignKey(Region)
 	topic			= models.ForeignKey(Topic)
-        user                    = models.ForeignKey(User)
+        user                    = models.ForeignKey(User, null=True, blank=True)
 	text			= models.TextField()
         
         
         def save(self, *args, **kwargs):
-                s = SectionHistory(entity=self, text=self.text, user=self.user)
-                s.save()
                 super(Section, self).save(*args, **kwargs)
+                s = SectionHistory(entity=self, oldtext=self.text, user=self.user)
+                s.save()
 
         def history(self):
                 return SectionHistory.objects.filter(entity=self)
