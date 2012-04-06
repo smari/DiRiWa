@@ -1,0 +1,19 @@
+<div class="span4"> 
+  <h2>{{item.headline}}</h2> 
+  <div>
+    {% for entity in item.itemref.all %}
+    {% if entity.region %}
+    <a class="label" href="/regions/{{entity.id}}/">{{entity.region.get_name}}</a>
+    {% endif %}
+    {% if entity.topic %}
+    <a class="label" href="/topics/{{entity.id}}/">{{entity.topic.name}}</a>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <p>{{item.text|safe|truncatewords_html:50}}</p>
+  {% if item.text|length > 10 %}
+  <p><a class="btn" href="/news/{{item.id}}/">View details &raquo;</a></p>
+  {% else %}
+  <p><a class="btn btn-large" href="{{item.url}}">View original story &raquo;</a></p>
+  {% endif %}
+</div> 
