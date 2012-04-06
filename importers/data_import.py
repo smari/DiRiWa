@@ -11,6 +11,7 @@ import csv
 from diriwa.models import *
 import settings
 settings.DEBUG = False
+from django.db import transaction
 
 csvfile = open("../data/countrylist.csv")
 dialect = csv.Sniffer().sniff(csvfile.read(1024))
@@ -27,28 +28,29 @@ treaty, created = RegionType.objects.get_or_create(name="Treaty")
 bloc, created = RegionType.objects.get_or_create(name="Block")
 country, created = RegionType.objects.get_or_create(name="Country")
 
-for line in reader:
-	c, created = Region.objects.get_or_create(shortname=line[1], name=line[2], type=country)
-	c.isocode = line[11]
-	c.currency = line[9]
-	c.capital = line[7]
-	c.deptype = line[4]
-	c.depsubtype = line[5]
-	c.itu_t = line[10]
-	c.tld = line[14]
-	c.save()
-	if created:
-		print "Created country %s" % c.shortname
-	else:
-		print "Updated country %s" % c.shortname
+with transaction.commit_on_success():
+   for line in reader:
+      c, created = Region.objects.get_or_create(shortname=line[1], name=line[2], type=country)
+      c.isocode = line[11]
+      c.currency = line[9]
+      c.capital = line[7]
+      c.deptype = line[4]
+      c.depsubtype = line[5]
+      c.itu_t = line[10]
+      c.tld = line[14]
+      c.save()
+      if created:
+         print "Created country %s" % c.shortname
+      else:
+         print "Updated country %s" % c.shortname
 
-	region, created = Region.objects.get_or_create(name=line[3], type=georegion)
-	memrel = RegionMembership.objects.get_or_create(region=region, member=c)
+      region, created = Region.objects.get_or_create(name=line[3], type=georegion)
+      memrel = RegionMembership.objects.get_or_create(region=region, member=c)
 
-	if created:
-		print "Created new %s: %s" % (region.type.name, region.name)
+      if created:
+         print "Created new %s: %s" % (region.type.name, region.name)
 
-	if line[6] != '':
-		parent, created = Region.objects.get_or_create(shortname=line[6], type=country)
-		memrel = RegionMembership.objects.get_or_create(region=parent, member=c, type=line[4])
+      if line[6] != '':
+         parent, created = Region.objects.get_or_create(shortname=line[6], type=country)
+         memrel = RegionMembership.objects.get_or_create(region=parent, member=c, type=line[4])
 

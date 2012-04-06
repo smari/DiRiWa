@@ -9,6 +9,7 @@ sys.path.append("..")
 os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
 import csv 
 from diriwa.models import *
+from django.db import transaction
 
 if len(sys.argv) < 3:
 	print "Usage: regionbuilder.py <countrylist.csv> <type> <region name>"
@@ -46,24 +47,25 @@ if created:
 else:
 	print "Using existing region %s" % region.name
 
-for line in reader:
-	try:
-		c = Region.objects.get(shortname=line[0])
-	except Exception, e:
-		try:
-			c = Region.objects.get(name=line[0])
-		except Exception, e:
-			try:
-				c = Region.objects.get(shortname__icontains=line[0])
-			except Exception, e:
-				print e
-				print "Couldn't find country name '%s' - check the spelling!" % line[0]
-				continue
+with transaction.commit_on_success():
+   for line in reader:
+      try:
+         c = Region.objects.get(shortname=line[0])
+      except Exception, e:
+         try:
+            c = Region.objects.get(name=line[0])
+         except Exception, e:
+            try:
+               c = Region.objects.get(shortname__icontains=line[0])
+            except Exception, e:
+               print e
+               print "Couldn't find country name '%s' - check the spelling!" % line[0]
+               continue
 
-	if len(line) > 1:
-		relationshiptype = line[1]
-	else:
-		relationshiptype = None
+      if len(line) > 1:
+         relationshiptype = line[1]
+      else:
+         relationshiptype = None
 
-	RegionMembership.objects.get_or_create(region=region, member=c, type=relationshiptype)
-	print "Added %s to region %s" % (c.shortname, region.name)
+      RegionMembership.objects.get_or_create(region=region, member=c, type=relationshiptype)
+      print "Added %s to region %s" % (c.shortname, region.name)
