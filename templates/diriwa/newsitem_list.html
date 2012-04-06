@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>News about {% if entity.region %}{{entity.region.get_name}}{% else %}{{entity.topic.name}}{% endif %}</h1>
+<hr/>
+{% for item in newsitems %}
+  {% if forloop.counter|divisibleby:"3" or forloop.first %}
+    <div class="row"> 
+  {% endif %}
+  {% include "diriwa/newsitem_display.html" %}
+  {% if forloop.counter|divisibleby:"3" or forloop.last %}
+    </div>
+  {% endif %}
+
+{% endfor %}
+{% endblock %}

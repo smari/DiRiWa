@@ -11,7 +11,7 @@ from django.utils.translation import ugettext as _
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.db.models import Q
 
-from django.views.generic import TemplateView, DetailView, CreateView, UpdateView
+from django.views.generic import TemplateView, DetailView, CreateView, UpdateView, ListView
 
 from datetime import datetime, timedelta, date
 import settings
@@ -95,7 +95,19 @@ class NewsItemCreateView(CreateView):
 
 		return HttpResponseRedirect(self.get_success_url())
 
+        
+class NewsListView(ListView):
+        context_object_name = "newsitems"
+        template_name = "diriwa/newsitem_list.html"
 
+        def get_queryset(self):
+                self.entity = get_object_or_404(Entity, id=self.kwargs["entity"])
+                return self.entity.relitem.all()
+
+        def get_context_data(self, *args, **kwargs):
+                context_data = super(NewsListView, self).get_context_data(*args, **kwargs)
+                context_data.update({'entity': self.entity})
+                return context_data
 
 
 @login_required

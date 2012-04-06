@@ -139,8 +139,10 @@
 	  {% for item in region.relitem.all|slice:":6" %}
 	        {% include "diriwa/newsitem_display.html" %}
 	  {% endfor %}
+	</div>
+	<div class="row">
 	  {% if region.relitem.count > 6 %}
-	        <a class="btn btn-large" href="/region/{{region.id}}/news/">More news! &raquo;</a>
+	        <a class="btn btn-large" href="/regions/{{region.id}}/news/">More news! &raquo;</a>
 	  {% endif %}
 	</div>
 	{% endif %}
