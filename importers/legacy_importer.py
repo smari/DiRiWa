@@ -22,10 +22,10 @@ for line in reader:
 	# print line
 	# print "Entity: %s  -  Subject: %s" % (line[0], line[1])
 	try:
-		region = Region.objects.get(name__iequals=line[0])
+		region = Region.objects.get(name__iexact=line[0])
 	except:
 		try:
-			region = Region.objects.get(shortname__iequals=line[0])
+			region = Region.objects.get(shortname__iexact=line[0])
 		except:
 			print "Dunno what to do with '%s'" % line[0]
 			continue

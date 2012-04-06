@@ -9,3 +9,4 @@ python regionbuilder.py ../data/european_union.csv Union 'European Union'
 python legacy_importer.py
 python wipo_import.py
 python coe_import.py
+python omnom_import.py

@@ -19,7 +19,7 @@ if not f:
 topics=[''.join(top.name.lower().split())
         for top in Topic.objects.all()]
 countries=[''.join(reg.shortname.lower().split())
-           for reg in Region.objects.filter(type=RegionType.objects.get(name="Country"))]
+           for reg in Region.objects.all()]
 
 for item in reversed(f['entries']):
    ts=[]
@@ -29,16 +29,22 @@ for item in reversed(f['entries']):
          cs.append(tag.get('term'))
       if tag.get('term','').lower() in topics:
          ts.append(tag.get('term'))
-   if ts and cs:
-      print item['links'][0]['href']
-      print item.get('title')
-      print '\t', ', '.join(cs)
-      print '\t', ', '.join(ts)
-      print ''.join([x.value for x in item.content])
-      #NewsItem.objects.get_or_create()
-      #headline		= models.CharField(max_length=200)
-      #text			= models.TextField()
-      #itemref			= models.ForeignKey(Entity, blank=True, null=True)
-      #author			= models.ForeignKey(User, blank=True, null=True)
-      #timestamp_submitted	= models.DateTimeField(auto_now_add=True)
-      #timestamp_edited	= models.DateTimeField(auto_now=True)
+   if ts:
+      newsitem, created = NewsItem.objects.get_or_create(headline=item.get('title'),
+                                                         url=item['links'][0]['href'])
+      if created:
+      newsitem.text=''.join([x.value for x in item.content])
+         newsitem.save()
+         # add tags from bookmark
+         tag=Tag.objects.get_or_create(name=tag['term'])[0]
+         EntityTag.objects.get_or_create(entity=newsitem, tag=tag)
+         # link topics to newsitem
+         for t in ts:
+            top=Topic.objects.get(name__iexact=t)
+            newsitem.itemref.add(top)
+            print top
+         # link countries to newsitem
+         for c in cs:
+            ctry=Region.objects.get(shortname__iexact=c)
+            newsitem.itemref.add(ctry)
+            print ctry
