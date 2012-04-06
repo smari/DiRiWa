@@ -27,14 +27,8 @@ for line in reader:
 		try:
 			region = Region.objects.get(shortname__iequals=line[0])
 		except:
-			try:
-				region = Region.objects.get(name__icontains=line[0])
-			except:
-				try:
-					region = Region.objects.get(shortname__icontains=line[0])
-				except:
-					print "Dunno what to do with '%s'" % line[0]
-					continue
+			print "Dunno what to do with '%s'" % line[0]
+			continue
 
 	topic, created = Topic.objects.get_or_create(name=line[1])
 	if created:
