@@ -1,9 +1,12 @@
 from django.conf.urls.defaults import *
 from django.views.generic import ListView, TemplateView, CreateView, UpdateView
 from django.contrib.auth.decorators import login_required
+from django.contrib import admin
 
 from diriwa.views import *
 from diriwa.forms import *
+
+admin.autodiscover()
 
 urlpatterns = patterns('',
 	(r"^$",						TemplateView.as_view(template_name="index.html")),
@@ -39,6 +42,7 @@ urlpatterns = patterns('',
 
 	(r'^accounts/profile/',				TemplateView.as_view(template_name="registration/profile.html")),
 	(r'^accounts/',					include('registration.urls')),
+   url(r'^admin/', include(admin.site.urls)),
 )
 
 urlpatterns += patterns('',
