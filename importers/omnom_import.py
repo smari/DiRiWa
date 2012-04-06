@@ -5,7 +5,6 @@ import sys
 sys.path.append("..")
 os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
 from diriwa.models import *
-from django.db import transaction
 from feedparser import parse
 import settings
 settings.DEBUG = False
